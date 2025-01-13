@@ -115,35 +115,27 @@ header nav ul li a:hover {
     border-radius: 15px;
 }
 
-/* Stats Section */
-#stats {
-    display: flex;
-    justify-content: space-around;
-    padding: 50px 20px;
-    background-color: #f1f1f1;
-}
 
-.stat {
+
+
+#hobbies {
+    padding: 20px;
+    background: #e0f7fa;
+    border-radius: 8px;
     text-align: center;
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.stat:hover {
-    transform: translateY(-10px);
+#hobbies .hobby {
+    margin-bottom: 15px;
+    font-size: 18px;
 }
 
-.stat h3 {
-    font-size: 3em;
-    color: #ff6f61;
-    margin-bottom: 10px;
-}
-
-.stat p {
-    font-size: 1.3em;
+#hobbies h3 {
+    color: #00796b;
+    font-size: 20px;
+    margin-bottom: 5px;
 }
 
 /* About Section */
