@@ -1,39 +1,128 @@
-/* Button Hover Animation */
-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* General Page Style */
+/* Global Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    line-height: 1.6;
     background-color: #f4f4f4;
 }
 
-/* Section Styles with Extra Space */
-section {
-    padding: 40px;
-    margin: 20px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+h1, h2 {
+    font-weight: bold;
 }
 
-/* Header and Footer Styles */
+/* Header Styles */
 header {
-    background-color: #333;
-    padding: 10px;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header .logo h1 {
+    font-size: 2.5em;
+    color: #007BFF;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+    color: #007BFF;
+}
+
+/* Hero Section */
+#hero {
+    display: flex;
+    justify-content: space-between;
+    padding: 100px 50px;
+    background: linear-gradient(135deg, #007BFF, #00aaff);
     color: white;
 }
 
-footer {
-    background-color: #333;
+.hero-text {
+    max-width: 50%;
+}
+
+.hero-text h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.hero-text h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.social-links a {
+    margin-right: 15px;
     color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #FF007B;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.hero-image img {
+    max-width: 50%;
+    border-radius: 10px;
+}
+
+/* Stats Section */
+#stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 20px;
+    background-color: #fff;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat h3 {
+    font-size: 2.5em;
+    color: #007BFF;
+    margin-bottom: 10px;
+}
+
+.stat p {
+    font-size: 1.1em;
+    color: #333;
+}
+
+/* Footer Styles */
+footer {
     text-align: center;
     padding: 20px;
-    margin-top: 20px;
+    background-color: #333;
+    color: white;
 }
