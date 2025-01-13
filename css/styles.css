@@ -3,27 +3,29 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #f8f8f8;
     color: #333;
 }
 
-h1, h2, h3 {
-    font-weight: bold;
-    color: #222;
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
-/* Header Styles */
+/* Header Section */
 header {
     display: flex;
     justify-content: space-between;
-    padding: 20px 50px;
-    background-color: #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 40px 50px;
+    background-color: #333;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 header .logo h1 {
     font-size: 2.5em;
-    color: #007BFF;
+    color: #ff6f61;
+    font-weight: bold;
 }
 
 header nav ul {
@@ -33,30 +35,30 @@ header nav ul {
 }
 
 header nav ul li {
-    margin-left: 20px;
+    margin-left: 25px;
 }
 
 header nav ul li a {
-    color: #333;
+    color: #fff;
     text-decoration: none;
-    font-size: 1em;
+    font-size: 1.1em;
     transition: color 0.3s;
 }
 
 header nav ul li a:hover {
-    color: #FF007B;
+    color: #ff6f61;
 }
 
 /* Hero Section */
 #hero {
     display: flex;
     justify-content: space-between;
-    padding: 100px 50px;
-    background: linear-gradient(45deg, #FF007B, #007BFF);
+    align-items: center;
+    height: 100vh;
+    padding: 50px;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
     color: white;
     position: relative;
-    z-index: 1;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .hero-text {
@@ -64,45 +66,52 @@ header nav ul li a:hover {
 }
 
 .hero-text h2 {
-    font-size: 1.5em;
+    font-size: 2em;
     margin-bottom: 10px;
 }
 
 .hero-text h1 {
-    font-size: 3em;
+    font-size: 4em;
     margin-bottom: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 5px;
 }
 
 .hero-text p {
-    font-size: 1.2em;
-    margin-bottom: 20px;
+    font-size: 1.5em;
+    margin-bottom: 30px;
 }
 
 .social-links a {
     margin-right: 15px;
     color: white;
-    text-decoration: none;
-    font-size: 1.2em;
+    font-size: 1.5em;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #ff6f61;
 }
 
 .cta-button {
     display: inline-block;
-    padding: 12px 25px;
-    background-color: #FF007B;
+    padding: 15px 30px;
+    background-color: #ff6f61;
     color: white;
     text-decoration: none;
     font-size: 1.3em;
-    border-radius: 30px;
-    transition: background-color 0.3s ease;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, transform 0.3s;
 }
 
 .cta-button:hover {
-    background-color: #007BFF;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    background-color: #2575fc;
+    transform: translateY(-5px);
 }
 
 .hero-image img {
-    max-width: 50%;
+    max-width: 40%;
     border-radius: 15px;
 }
 
@@ -111,102 +120,144 @@ header nav ul li a:hover {
     display: flex;
     justify-content: space-around;
     padding: 50px 20px;
-    background-color: #fff;
+    background-color: #f1f1f1;
 }
 
 .stat {
     text-align: center;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.stat:hover {
+    transform: translateY(-10px);
 }
 
 .stat h3 {
-    font-size: 2.5em;
-    color: #FF007B;
+    font-size: 3em;
+    color: #ff6f61;
     margin-bottom: 10px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .stat p {
-    font-size: 1.1em;
-    color: #333;
+    font-size: 1.3em;
 }
 
 /* About Section */
 #about {
-    padding: 50px;
-    background-color: #f4f4f4;
+    padding: 60px 30px;
+    background-color: #fff;
+}
+
+#about h2 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #2575fc;
 }
 
 #about p {
     font-size: 1.2em;
-    line-height: 1.6;
-    color: #555;
+    line-height: 1.8;
+    color: #333;
+    text-align: center;
 }
 
 /* Skills Section */
 #skills {
-    padding: 50px;
-    background-color: #fff;
+    padding: 60px 30px;
+    background-color: #f8f8f8;
+}
+
+#skills h2 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #2575fc;
 }
 
 #skills ul {
     list-style: none;
     padding: 0;
+    text-align: center;
 }
 
 #skills ul li {
-    font-size: 1.2em;
+    font-size: 1.4em;
     margin: 10px 0;
     color: #333;
-    transition: transform 0.3s ease;
+    transition: color 0.3s ease;
 }
 
 #skills ul li:hover {
-    transform: translateX(10px);
+    color: #ff6f61;
 }
 
 /* Projects Section */
 #projects {
-    padding: 50px;
-    background-color: #f4f4f4;
+    padding: 60px 30px;
+    background-color: #fff;
+}
+
+#projects h2 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #2575fc;
 }
 
 .project {
-    margin-bottom: 20px;
+    background-color: #f8f8f8;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.project:hover {
+    transform: scale(1.05);
 }
 
 .project h3 {
-    font-size: 1.5em;
-    color: #FF007B;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
+    font-size: 2em;
+    color: #ff6f61;
 }
 
 .project p {
-    font-size: 1.1em;
-    line-height: 1.6;
+    font-size: 1.2em;
     color: #333;
+    line-height: 1.6;
 }
 
-/* Footer Styles */
+/* Footer Section */
 footer {
     text-align: center;
-    padding: 20px;
+    padding: 30px;
     background-color: #333;
     color: white;
 }
 
-footer p {
-    margin: 0;
-}
+/* Responsive Styles */
+@media (max-width: 768px) {
+    #hero {
+        flex-direction: column;
+        align-items: center;
+    }
 
-/* Background Animation (optional) */
-@keyframes gradientBG {
-    0% { background: linear-gradient(45deg, #FF007B, #007BFF); }
-    50% { background: linear-gradient(45deg, #FF9A00, #00FF80); }
-    100% { background: linear-gradient(45deg, #FF007B, #007BFF); }
-}
+    .hero-text {
+        text-align: center;
+        max-width: 90%;
+    }
 
-#hero {
-    animation: gradientBG 10s infinite;
+    .hero-image img {
+        max-width: 100%;
+    }
+
+    .stat {
+        margin-bottom: 20px;
+    }
 }
