@@ -1,1 +1,72 @@
+/* Body Styles */
+body {
+    font-family: Arial, sans-serif; /* Sets a clean font for the page */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6; /* Increases line spacing for better readability */
+    background-color: #f4f4f4; /* Light gray background */
+}
+
+/* Navigation Styles */
+nav ul {
+    list-style: none; /* Removes default list style */
+    background: #333; /* Dark background for the navigation bar */
+    padding: 10px; /* Adds padding to the navbar */
+    display: flex; /* Arranges the links horizontally */
+    justify-content: space-around; /* Spreads out the links evenly */
+    margin: 0; /* Removes default margin */
+}
+
+nav ul li a {
+    color: white; /* White text color */
+    text-decoration: none; /* Removes underlines from links */
+    padding: 10px 15px; /* Adds padding around the links */
+    font-size: 16px; /* Makes text slightly larger */
+}
+
+nav ul li a:hover {
+    background: #555; /* Lighter background when hovering */
+    border-radius: 5px; /* Adds rounded corners on hover */
+}
+
+/* Section Styles */
+section {
+    padding: 20px;
+    margin: 10px 0;
+    background-color: white; /* White background for sections */
+    border-radius: 8px; /* Rounded corners for sections */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds soft shadow around sections */
+}
+
+/* Heading Styles */
+h1 {
+    color: #333; /* Dark text color for headings */
+    font-size: 28px; /* Larger font size for headings */
+    margin-bottom: 15px; /* Adds space below headings */
+}
+
+/* Paragraph Styles */
+p {
+    color: #666; /* Gray color for text */
+    font-size: 16px; /* Sets a standard font size for paragraphs */
+}
+
+/* Link Styles */
+a {
+    color: #333; /* Sets link color to dark gray */
+    text-decoration: none; /* Removes underline from links */
+}
+
+a:hover {
+    color: #007BFF; /* Changes link color to blue on hover */
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333; /* Dark background for the footer */
+    color: white; /* White text for the footer */
+    padding: 10px 20px; /* Adds padding around the footer */
+    text-align: center; /* Centers the footer text */
+    margin-top: 20px; /* Adds space between main content and footer */
+}
 
