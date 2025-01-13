@@ -158,35 +158,52 @@ header nav ul li a:hover {
     text-align: center;
 }
 
-/* Skills Section */
 #skills {
-    padding: 60px 30px;
-    background-color: #f8f8f8;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #f0f8ff, #e0f7fa);
+    border-radius: 8px;
+    text-align: center;
+    margin: 20px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 #skills h2 {
-    text-align: center;
-    font-size: 2.5em;
+    font-size: 28px;
+    color: #00796b;
     margin-bottom: 20px;
-    color: #2575fc;
+    text-transform: uppercase;
 }
 
-#skills ul {
+.skill-category {
+    margin-bottom: 20px;
+}
+
+.skill-category h3 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+}
+
+.skill-category ul {
     list-style: none;
     padding: 0;
-    text-align: center;
 }
 
-#skills ul li {
-    font-size: 1.4em;
-    margin: 10px 0;
-    color: #333;
-    transition: color 0.3s ease;
+.skill-category ul li {
+    font-size: 18px;
+    color: #555;
+    padding: 5px 0;
+    line-height: 1.6;
 }
 
-#skills ul li:hover {
-    color: #ff6f61;
+.skill-category ul li::before {
+    content: "✔️";
+    margin-right: 8px;
+    color: #00796b;
+    font-size: 16px;
 }
+
 
 /* Projects Section */
 #projects {
