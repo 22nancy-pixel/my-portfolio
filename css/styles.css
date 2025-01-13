@@ -1,13 +1,15 @@
 /* Global Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+    color: #333;
 }
 
-h1, h2 {
+h1, h2, h3 {
     font-weight: bold;
+    color: #222;
 }
 
 /* Header Styles */
@@ -50,7 +52,7 @@ header nav ul li a:hover {
     display: flex;
     justify-content: space-between;
     padding: 100px 50px;
-    background: linear-gradient(135deg, #007BFF, #00aaff);
+    background: linear-gradient(135deg, #00aaff, #007BFF);
     color: white;
 }
 
@@ -117,6 +119,53 @@ header nav ul li a:hover {
 .stat p {
     font-size: 1.1em;
     color: #333;
+}
+
+/* About Section */
+#about {
+    padding: 50px;
+    background-color: #f4f4f4;
+}
+
+#about p {
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
+/* Skills Section */
+#skills {
+    padding: 50px;
+    background-color: #fff;
+}
+
+#skills ul {
+    list-style: none;
+    padding: 0;
+}
+
+#skills ul li {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+/* Projects Section */
+#projects {
+    padding: 50px;
+    background-color: #f4f4f4;
+}
+
+.project {
+    margin-bottom: 20px;
+}
+
+.project h3 {
+    font-size: 1.5em;
+    color: #007BFF;
+}
+
+.project p {
+    font-size: 1.1em;
+    line-height: 1.6;
 }
 
 /* Footer Styles */
