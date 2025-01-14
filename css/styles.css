@@ -247,6 +247,25 @@ footer {
     background-color: #333;
     color: white;
 }
+#download-cv {
+    text-align: center;
+    padding: 40px 20px;
+    background: #ffebee;
+    border-radius: 8px;
+}
+.download-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #d32f2f;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+.download-btn:hover {
+    background: #b71c1c;
+}
+
 
 /* Responsive Styles */
 @media (max-width: 768px) {
