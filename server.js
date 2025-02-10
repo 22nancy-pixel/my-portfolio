@@ -1,24 +1,26 @@
+require('dotenv').config();
 const express = require('express');
-const bcrypt = require('bcryptjs');
-const dotenv = require('dotenv');
-const app = express();
-
-dotenv.config();
-app.use(express.json()); // to handle POST requests with JSON data
-
-const PORT = process.env.PORT || 5000;
-
-// Basic route to test server
-app.get('/', (req, res) => {
-    res.send('Hello from the backend!');
-});
-
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
-
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const cors = require('cors');
 
-mongoose.connect('mongodb://localhost:27017/Mydatabase', { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('MongoDB connected'))
-    .catch(err => console.log(err));
+const app = express();
+app.use(express.json());
+app.use(cors()); // Allows frontend requests
+
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost:27017/my-portfolio-db', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => console.log('✅ MongoDB connected'))
+.catch((err) => console.log('❌ MongoDB connection error:', err));
+
+// Define the User Schema
+const userSchema = new mongoose.Schema({
+    username: { type: String, required: true, unique: true },
+    password: { type: String, required: true }
+});
+
+const User = mongoose.model('User', userSchema);
