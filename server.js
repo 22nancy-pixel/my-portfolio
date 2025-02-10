@@ -1,29 +1,23 @@
-mongodb+srv://nancyelorm:<nancy0000>@cluster0.calpq.mongodb.net/portfolio?retryWrites=true&w=majority&appName=Cluster0
-
 const cors = require('cors');
 const dotenv = require('dotenv');
-const jwt = require('jsonwebtoken');const cors = require('cors');  // <-- Add this line at the top
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const express = require('express');
 
-const express = require('express');  // Make sure this line is at the top
-require('dotenv').config();
+dotenv.config();
 const mongoose = require('mongoose');
-
-mongoose.connect(process.env.MONGO_URI)
-    .then(() => console.log('✅ MongoDB connected successfully!'))
-    .catch(err => console.error('❌ MongoDB connection error:', err));
-
-const mongoURI = 'mongodb://localhost:27017/my-portfolio';  // Use this if MongoDB is on your local machine
-
 
 const app = express();
 app.use(express.json());
 app.use(cors()); // Allows frontend requests
 
+// MongoDB connection string (use the one from your MongoDB Atlas or local MongoDB)
+const mongoURI = process.env.MONGO_URI || 'mongodb+srv://nancyelorm:nancy0000@cluster0.calpq.mongodb.net/portfolio?retryWrites=true&w=majority&appName=Cluster0';
+
 // Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI)
-    
-.then(() => console.log('✅ MongoDB connected'))
-.catch((err) => console.log('❌ MongoDB connection error:', err));
+mongoose.connect(mongoURI)
+    .then(() => console.log('✅ MongoDB connected successfully!'))
+    .catch(err => console.error('❌ MongoDB connection error:', err));
 
 // Define the User Schema
 const userSchema = new mongoose.Schema({
@@ -33,6 +27,7 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
+// Registration Route
 app.post('/register', async (req, res) => {
     const { username, password } = req.body;
 
@@ -60,6 +55,8 @@ app.post('/register', async (req, res) => {
         res.status(500).json({ message: 'Error registering user' });
     }
 });
+
+// Login Route
 app.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
@@ -86,3 +83,11 @@ app.post('/login', async (req, res) => {
     }
 });
 
+// Set the server to listen on a port
+const port = process.env.PORT || 5000;
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+});
+
+
+    
