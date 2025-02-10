@@ -90,4 +90,28 @@ const port = process.env.PORT || 5000;
 app.listen(port, () => {
     console.log(`🎯 Server running on port ${port}`);
 });
+
+// Middleware to verify the JWT token
+const verifyToken = (req, res, next) => {
+    const token = req.headers['authorization'];
+
+    if (!token) {
+        return res.status(403).json({ message: 'Access denied. No token provided.' });
+    }
+
+    jwt.verify(token, 'secretkey', (err, decoded) => {
+        if (err) {
+            return res.status(401).json({ message: 'Invalid token' });
+        }
+        req.user = decoded;
+        next();
+    });
+};
+
+// Protect routes like portfolio
+app.get('/portfolio', verifyToken, (req, res) => {
+    // Send the portfolio content
+    res.status(200).json({ message: 'Welcome to the portfolio!' });
+});
+
    
