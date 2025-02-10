@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+</head>
+<body>
+    <div>
+        <h1>Welcome to My Portfolio</h1>
+        <!-- Add your portfolio content here -->
+    </div>
+
+    <script>
+        // Check if the user is authenticated
+        const token = localStorage.getItem('authToken');
+
+        if (!token) {
+            // If no token is found, redirect to the login page
+            window.location.href = 'login.html';
+        }
+
+        // Optional: Verify the token with the backend to ensure it's still valid
+        // You can send the token in a request header and verify it on the server side
+    </script>
+</body>
+</html>
