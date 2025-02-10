@@ -114,5 +114,41 @@
     <footer id="contact">
         <p>Contact me at: <a href="mailto:nancyelorm11@gmail.com">nancyelorm11@gmail.com</a></p>
     </footer>
+    <form id="login-form">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+
+    <button type="submit">Login</button>
+</form>
+
+<script>
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        const response = await fetch('http://localhost:5000/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username, password })
+        });
+
+        const result = await response.json();
+        alert(result.message);
+
+        if (response.ok) {
+            // Store the token in localStorage (for authentication)
+            localStorage.setItem('token', result.token);
+            window.location.href = "dashboard.html"; // Redirect to a dashboard page
+        }
+    });
+</script>
+
 </body>
 </html>
