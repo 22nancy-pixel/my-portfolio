@@ -4,29 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Portfolio</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Optional: Link to your CSS file for styling -->
 </head>
 <body>
     <div class="login-container">
-        <h2>Login to Your Account</h2>
+        <h2>Login to Access Portfolio</h2>
         
-        <!-- Login Form -->
         <form id="loginForm">
-            <div class="input-group">
+            <div>
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
             </div>
             
-            <div class="input-group">
+            <div>
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
             </div>
 
-            <button type="submit" id="loginButton">Login</button>
+            <button type="submit">Login</button>
         </form>
 
         <p id="errorMessage" style="color: red; display: none;">Invalid username or password.</p>
-        <p>Don't have an account? <a href="register.html">Register here</a></p> <!-- Link to your registration page -->
     </div>
 
     <script>
@@ -39,7 +36,7 @@
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            const response = await fetch('http://localhost:5000/login', { // Use your backend URL here
+            const response = await fetch('http://localhost:5000/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -49,10 +46,10 @@
 
             if (response.ok) {
                 const data = await response.json();
-                localStorage.setItem('authToken', data.token); // Store token in localStorage
-                window.location.href = 'dashboard.html'; // Redirect to dashboard or home page
+                localStorage.setItem('authToken', data.token); // Store the token in localStorage
+                window.location.href = 'portfolio.html'; // Redirect to the portfolio page
             } else {
-                errorMessage.style.display = 'block'; // Show error message if login fails
+                errorMessage.style.display = 'block'; // Show error message
             }
         });
     </script>
