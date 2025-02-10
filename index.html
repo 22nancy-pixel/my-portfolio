@@ -3,152 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Portfolio</title>
 </head>
 <body>
-    <header>
-       <div class="logo">
-    <div class="hero-image">
-        <img src="images/images.png" alt="Portfolio Image">
-    </div>
-</div>
-            </h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#hobbies">Hobbies</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#journey">My Journey</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <section id="hero">
-        <div class="hero-text">
-            <h2>Hey There!</h2>
-            <h1>I Am Nancy El Orm</h1>
-            <p>Creative Web Developer & IT Coordinator</p>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/nancy-el-orm-528a20226" target="_blank">LinkedIn</a>
-                <a href="mailto:nancyelorm11@gmail.com">Email</a>
+    <!-- Login/Registration Form Section -->
+    <div id="auth-section" style="display: none;">
+        <h2>Login to Access Portfolio</h2>
+        
+        <form id="loginForm">
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
             </div>
-             </div>
-    </section>
+            
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
 
-   <section id="hobbies">
-    <h2>Hobbies & Interests</h2>
-    <div class="hobby">
-        <h3>Drawing Portraits</h3>
-        <p>In my free time, I love to draw realistic portraits. It helps me relax and express my creativity.</p>
-    </div>
-    <div class="hobby">
-        <h3>Exploring Technology</h3>
-        <p>I enjoy exploring new tech trends and experimenting with different programming languages.</p>
-    </div>
-    <div class="hobby">
-        <h3>Photography</h3>
-        <p>Capturing beautiful landscapes, especially around Chouf, is one of my favorite pastimes.</p>
-    </div>
-</section>
+            <button type="submit">Login</button>
+        </form>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Hi! I’m Nancy El Orm, a passionate computer science student and tech enthusiast with a love for solving complex problems. My journey in technology began with a simple curiosity about how things work, and it has evolved into a deep fascination with coding, app development, and IT solutions. In my free time, I enjoy sketching detailed portraits, blending precision and creativity—a mindset I also bring to my coding projects. Whether it’s debugging lines of code or drawing fine lines in a portrait, I find joy in creating something meaningful. Always eager to learn, explore, and innovate, I’m on a continuous quest to turn ideas into impactful digital experiences.</p>
-    </section>
+        <p id="errorMessage" style="color: red; display: none;">Invalid username or password.</p>
+        
+        <h3>Don't have an account? <button onclick="showRegisterForm()">Register</button></h3>
 
- <section id="skills">
-    <h2>Skills</h2>
-    <div class="skill-category">
-        <h3>Technical Skills</h3>
-        <ul>
-            <li>Programming Languages: C++, C#, Python, Kotlin, JavaScript, HTML, CSS</li>
-            <li>Frameworks & Libraries: .NET, ASP.NET Core, Bootstrap</li>
-            <li>Database Management: SQL, MySQL, SQLite</li>
-        </ul>
-    </div>
-    <div class="skill-category">
-        <h3>Soft Skills</h3>
-        <ul>
-            <li>Problem Solving</li>
-            <li>Team Collaboration</li>
-            <li>Time Management</li>
-            <li>Creativity</li>
-        </ul>
-    </div>
-    <div class="skill-category">
-        <h3>Fun Skills</h3>
-        <ul>
-            <li>Portrait Drawing</li>
-            <li>Photography</li>
-        </ul>
-    </div>
-</section>
+        <!-- Registration Form (Hidden by default) -->
+        <div id="register-form" style="display: none;">
+            <h3>Register</h3>
+            <form id="registerForm">
+                <div>
+                    <label for="newUsername">Username:</label>
+                    <input type="text" id="newUsername" name="newUsername" required>
+                </div>
+                
+                <div>
+                    <label for="newPassword">Password:</label>
+                    <input type="password" id="newPassword" name="newPassword" required>
+                </div>
 
-
-   <section id="journey">
-    <h2>My Journey</h2>
-    <div class="timeline">
-        <div class="event">
-            <h3>2022 – Graduated from Irfan Schools</h3>
-            <p>Completed my high school diploma with distinction.</p>
-        </div>
-        <div class="event">
-            <h3>2023 – Internship at Park Innovation</h3>
-            <p>Gained valuable experience in IT coordination and program management.</p>
-        </div>
-        <div class="event">
-            <h3>2023 – Present: IT Coordinator at Mir Amin Palace Hotel</h3>
-            <p>Handling IT support and managing technical operations.</p>
+                <button type="submit">Register</button>
+            </form>
         </div>
     </div>
-</section>
-    <section id="download-cv">
-    <h2>Download My CV</h2>
-    <a href="https://docs.google.com/document/d/1KlaLcjts8joEk9FT6oRaYZSVSbrwooiLLTVNtspMDx0/edit?usp=sharing" target="_blank" class="download-btn">Download Now</a>
 
-</section>
+    <!-- Portfolio Section -->
+    <div id="portfolio-section" style="display: none;">
+        <h1>Welcome to My Portfolio</h1>
+        <p>Here's all the content of my portfolio...</p>
+        <!-- Add your portfolio content here -->
+        <button onclick="logout()">Logout</button>
+    </div>
 
-    <footer id="contact">
-        <p>Contact me at: <a href="mailto:nancyelorm11@gmail.com">nancyelorm11@gmail.com</a></p>
-    </footer>
-    <form id="login-form">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" required>
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const errorMessage = document.getElementById('errorMessage');
+        const authSection = document.getElementById('auth-section');
+        const portfolioSection = document.getElementById('portfolio-section');
+        const registerSection = document.getElementById('register-form');
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
+        // Check if the user is logged in (i.e., if there's a token)
+        function checkLoginStatus() {
+            const token = localStorage.getItem('authToken');
+            
+            if (token) {
+                // If token exists, show the portfolio section
+                authSection.style.display = 'none';
+                portfolioSection.style.display = 'block';
+            } else {
+                // If no token, show the login/register section
+                authSection.style.display = 'block';
+                portfolioSection.style.display = 'none';
+            }
+        }
 
-    <button type="submit">Login</button>
-</form>
+        // Show the register form when the user clicks "Register"
+        function showRegisterForm() {
+            registerSection.style.display = 'block';
+            loginForm.style.display = 'none';
+        }
 
-<script>
-    document.getElementById('login-form').addEventListener('submit', async (e) => {
-        e.preventDefault();
+        // Handle login
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
 
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
+            const response = await fetch('http://localhost:5000/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            });
 
-        const response = await fetch('http://localhost:5000/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ username, password })
+            if (response.ok) {
+                const data = await response.json();
+                localStorage.setItem('authToken', data.token); // Store token in localStorage
+                checkLoginStatus(); // Check login status and show the portfolio section
+            } else {
+                errorMessage.style.display = 'block';
+            }
         });
 
-        const result = await response.json();
-        alert(result.message);
+        // Handle registration
+        registerForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('newUsername').value;
+            const password = document.getElementById('newPassword').value;
 
-        if (response.ok) {
-            // Store the token in localStorage (for authentication)
-            localStorage.setItem('token', result.token);
-            window.location.href = "dashboard.html"; // Redirect to a dashboard page
+            const response = await fetch('http://localhost:5000/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            });
+
+            if (response.ok) {
+                alert('Registration successful! Please log in.');
+                showLoginForm(); // Show the login form after successful registration
+            } else {
+                alert('Error registering user.');
+            }
+        });
+
+        // Handle logout
+        function logout() {
+            localStorage.removeItem('authToken'); // Remove token from localStorage
+            checkLoginStatus(); // Show login section again
         }
-    });
-</script>
 
+        // Show the login form again after registration
+        function showLoginForm() {
+            registerSection.style.display = 'none';
+            loginForm.style.display = 'block';
+        }
+
+        // On page load, check if user is logged in
+        checkLoginStatus();
+    </script>
 </body>
 </html>
