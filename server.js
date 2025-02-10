@@ -1,5 +1,8 @@
 mongodb+srv://nancyelorm:<nancy0000>@cluster0.calpq.mongodb.net/portfolio?retryWrites=true&w=majority&appName=Cluster0
-const cors = require('cors');  // <-- Add this line at the top
+
+const cors = require('cors');
+const dotenv = require('dotenv');
+const jwt = require('jsonwebtoken');const cors = require('cors');  // <-- Add this line at the top
 
 const express = require('express');  // Make sure this line is at the top
 require('dotenv').config();
