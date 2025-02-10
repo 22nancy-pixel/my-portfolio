@@ -1,3 +1,5 @@
+const cors = require('cors');  // <-- Add this line at the top
+
 const express = require('express');  // Make sure this line is at the top
 require('dotenv').config();
 const mongoose = require('mongoose');
