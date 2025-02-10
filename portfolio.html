@@ -1,27 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-</head>
-<body>
-    <div>
-        <h1>Welcome to My Portfolio</h1>
-        <!-- Add your portfolio content here -->
-    </div>
+<!-- Portfolio Section -->
+<div id="portfolio-section" style="display: none;">
+    <h1>Welcome to My Portfolio</h1>
+    
+    <!-- Portfolio Content -->
+    <section>
+        <h2>About Me</h2>
+        <p>This is a brief introduction about myself...</p>
+    </section>
 
-    <script>
-        // Check if the user is authenticated
-        const token = localStorage.getItem('authToken');
+    <section>
+        <h2>My Projects</h2>
+        <div>
+            <h3>Project 1: Portfolio Website</h3>
+            <p>A website I built to showcase my projects and skills.</p>
+        </div>
+        <div>
+            <h3>Project 2: Mobile App</h3>
+            <p>A mobile app I developed for a university project.</p>
+        </div>
+    </section>
 
-        if (!token) {
-            // If no token is found, redirect to the login page
-            window.location.href = 'login.html';
-        }
+    <section>
+        <h2>Contact</h2>
+        <p>Feel free to reach out to me via email or LinkedIn!</p>
+    </section>
 
-        // Optional: Verify the token with the backend to ensure it's still valid
-        // You can send the token in a request header and verify it on the server side
-    </script>
-</body>
-</html>
+    <!-- Logout Button -->
+    <button onclick="logout()">Logout</button>
+</div>
+
