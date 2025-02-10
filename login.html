@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Portfolio</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Optional: Link to your CSS file for styling -->
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login to Your Account</h2>
+        
+        <!-- Login Form -->
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <button type="submit" id="loginButton">Login</button>
+        </form>
+
+        <p id="errorMessage" style="color: red; display: none;">Invalid username or password.</p>
+        <p>Don't have an account? <a href="register.html">Register here</a></p> <!-- Link to your registration page -->
+    </div>
+
+    <script>
+        const form = document.getElementById('loginForm');
+        const errorMessage = document.getElementById('errorMessage');
+        
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            const response = await fetch('http://localhost:5000/login', { // Use your backend URL here
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                localStorage.setItem('authToken', data.token); // Store token in localStorage
+                window.location.href = 'dashboard.html'; // Redirect to dashboard or home page
+            } else {
+                errorMessage.style.display = 'block'; // Show error message if login fails
+            }
+        });
+    </script>
+</body>
+</html>
