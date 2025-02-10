@@ -4,11 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
+    <style>
+        /* Example of your portfolio design styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .portfolio-content {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .auth-section, .portfolio-section {
+            display: none;
+        }
+
+        .auth-section.active, .portfolio-section.active {
+            display: block;
+        }
+
+        .error-message {
+            color: red;
+            display: none;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #555;
+        }
+    </style>
 </head>
 <body>
 
     <!-- Login/Registration Form Section -->
-    <div id="auth-section" style="display: none;">
+    <div id="auth-section" class="auth-section active">
         <h2>Login to Access Portfolio</h2>
         
         <form id="loginForm">
@@ -22,12 +72,12 @@
                 <input type="password" id="password" name="password" required>
             </div>
 
-            <button type="submit">Login</button>
+            <button class="button" type="submit">Login</button>
         </form>
 
-        <p id="errorMessage" style="color: red; display: none;">Invalid username or password.</p>
+        <p id="errorMessage" class="error-message">Invalid username or password.</p>
         
-        <h3>Don't have an account? <button onclick="showRegisterForm()">Register</button></h3>
+        <h3>Don't have an account? <button class="button" onclick="showRegisterForm()">Register</button></h3>
 
         <!-- Registration Form (Hidden by default) -->
         <div id="register-form" style="display: none;">
@@ -43,17 +93,33 @@
                     <input type="password" id="newPassword" name="newPassword" required>
                 </div>
 
-                <button type="submit">Register</button>
+                <button class="button" type="submit">Register</button>
             </form>
         </div>
     </div>
 
     <!-- Portfolio Section -->
-    <div id="portfolio-section" style="display: none;">
-        <h1>Welcome to My Portfolio</h1>
-        <p>Here's all the content of my portfolio...</p>
-        <!-- Add your portfolio content here -->
-        <button onclick="logout()">Logout</button>
+    <div id="portfolio-section" class="portfolio-section">
+        <div class="header">
+            <h1>Welcome to My Portfolio</h1>
+        </div>
+        <div class="portfolio-content">
+            <h2>About Me</h2>
+            <p>This is my portfolio where I showcase all my projects and accomplishments.</p>
+            <p>Here's some work I have done...</p>
+
+            <!-- Your actual portfolio content -->
+            <!-- Example: -->
+            <h3>Project 1: Web Development</h3>
+            <p>Description of the project...</p>
+            
+            <h3>Project 2: Mobile App</h3>
+            <p>Description of the project...</p>
+            
+            <!-- Add more portfolio content here -->
+
+            <button class="button" onclick="logout()">Logout</button>
+        </div>
     </div>
 
     <script>
@@ -70,12 +136,12 @@
             
             if (token) {
                 // If token exists, show the portfolio section
-                authSection.style.display = 'none';
-                portfolioSection.style.display = 'block';
+                authSection.classList.remove('active');
+                portfolioSection.classList.add('active');
             } else {
                 // If no token, show the login/register section
-                authSection.style.display = 'block';
-                portfolioSection.style.display = 'none';
+                authSection.classList.add('active');
+                portfolioSection.classList.remove('active');
             }
         }
 
