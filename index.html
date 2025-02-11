@@ -49,10 +49,8 @@
 </head>
 <body>
 
-    <!-- Login/Registration Form Section -->
     <div id="auth-section" class="auth-section active">
         <h2>Login to Access Portfolio</h2>
-        
         <form id="loginForm">
             <div>
                 <label for="username">Username:</label>
@@ -64,12 +62,8 @@
             </div>
             <button class="button" type="submit">Login</button>
         </form>
-
         <p id="errorMessage" class="error-message">Invalid username or password.</p>
-        
         <h3>Don't have an account? <button class="button" onclick="showRegisterForm()">Register</button></h3>
-
-        <!-- Registration Form -->
         <div id="register-form" style="display: none;">
             <h3>Register</h3>
             <form id="registerForm">
@@ -86,14 +80,43 @@
         </div>
     </div>
 
-    <!-- Portfolio Section -->
     <div id="portfolio-section" class="portfolio-section">
         <div class="header">
             <h1>Welcome to My Portfolio</h1>
         </div>
         <div class="portfolio-content">
             <h2>About Me</h2>
-            <p>This is my portfolio where I showcase all my projects and accomplishments.</p>
+            <p>My name is Nancy El Orm, a Senior Computer Science student passionate about technology and problem-solving.</p>
+            
+            <h2>Skills</h2>
+            <ul>
+                <li>MATLAB</li>
+                <li>Python</li>
+                <li>Google Sheets</li>
+                <li>C++</li>
+                <li>JavaScript</li>
+                <li>Kotlin</li>
+                <li>HTML</li>
+                <li>Visual Studio</li>
+                <li>Android Studio</li>
+                <li>GitHub</li>
+            </ul>
+            
+            <h2>Projects</h2>
+            <p>Details of my projects and accomplishments...</p>
+            
+            <h2>Education</h2>
+            <p>Bachelor of Computer Science, Notre Dame University (Final Year)</p>
+            
+            <h2>Experience</h2>
+            <ul>
+                <li>IT Coordinator at Mir Amin Palace Hotel (Oct 2023 - Oct 2024)</li>
+                <li>Internship at Park Innovation (Oct 2024 - Feb 2025)</li>
+            </ul>
+            
+            <h2>Contact</h2>
+            <p>Email: nancyelorm11@gmail.com</p>
+            <p>Phone: +961 81 860206</p>
             
             <button class="button" onclick="logout()">Logout</button>
         </div>
@@ -165,6 +188,5 @@
 
         checkLoginStatus();
     </script>
-
 </body>
 </html>
