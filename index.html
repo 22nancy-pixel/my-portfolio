@@ -5,21 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
     <style>
-        /* Example of your portfolio design styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f0f0f0;
         }
-
         .header {
             background-color: #333;
             color: #fff;
             padding: 20px;
             text-align: center;
         }
-
         .portfolio-content {
             margin: 20px;
             padding: 20px;
@@ -27,20 +24,16 @@
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-
         .auth-section, .portfolio-section {
             display: none;
         }
-
         .auth-section.active, .portfolio-section.active {
             display: block;
         }
-
         .error-message {
             color: red;
             display: none;
         }
-
         .button {
             padding: 10px 20px;
             background-color: #333;
@@ -49,7 +42,6 @@
             cursor: pointer;
             border-radius: 5px;
         }
-
         .button:hover {
             background-color: #555;
         }
@@ -66,12 +58,10 @@
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
             </div>
-            
             <div>
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
             </div>
-
             <button class="button" type="submit">Login</button>
         </form>
 
@@ -79,7 +69,7 @@
         
         <h3>Don't have an account? <button class="button" onclick="showRegisterForm()">Register</button></h3>
 
-        <!-- Registration Form (Hidden by default) -->
+        <!-- Registration Form -->
         <div id="register-form" style="display: none;">
             <h3>Register</h3>
             <form id="registerForm">
@@ -87,12 +77,10 @@
                     <label for="newUsername">Username:</label>
                     <input type="text" id="newUsername" name="newUsername" required>
                 </div>
-                
                 <div>
                     <label for="newPassword">Password:</label>
                     <input type="password" id="newPassword" name="newPassword" required>
                 </div>
-
                 <button class="button" type="submit">Register</button>
             </form>
         </div>
@@ -106,18 +94,7 @@
         <div class="portfolio-content">
             <h2>About Me</h2>
             <p>This is my portfolio where I showcase all my projects and accomplishments.</p>
-            <p>Here's some work I have done...</p>
-
-            <!-- Your actual portfolio content -->
-            <!-- Example: -->
-            <h3>Project 1: Web Development</h3>
-            <p>Description of the project...</p>
             
-            <h3>Project 2: Mobile App</h3>
-            <p>Description of the project...</p>
-            
-            <!-- Add more portfolio content here -->
-
             <button class="button" onclick="logout()">Logout</button>
         </div>
     </div>
@@ -130,87 +107,62 @@
         const portfolioSection = document.getElementById('portfolio-section');
         const registerSection = document.getElementById('register-form');
 
-        // Check if the user is logged in (i.e., if there's a token)
         function checkLoginStatus() {
             const token = localStorage.getItem('authToken');
-            
             if (token) {
-                // If token exists, show the portfolio section
                 authSection.classList.remove('active');
                 portfolioSection.classList.add('active');
             } else {
-                // If no token, show the login/register section
                 authSection.classList.add('active');
                 portfolioSection.classList.remove('active');
             }
         }
 
-        // Show the register form when the user clicks "Register"
         function showRegisterForm() {
             registerSection.style.display = 'block';
             loginForm.style.display = 'none';
         }
 
-        // Handle login
-        loginForm.addEventListener('submit', async (e) => {
+        loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            const response = await fetch('http://localhost:5000/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ username, password })
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                localStorage.setItem('authToken', data.token); // Store token in localStorage
-                checkLoginStatus(); // Check login status and show the portfolio section
+            const storedUsers = JSON.parse(localStorage.getItem('users')) || {};
+            if (storedUsers[username] && storedUsers[username] === password) {
+                localStorage.setItem('authToken', username);
+                checkLoginStatus();
             } else {
                 errorMessage.style.display = 'block';
             }
         });
 
-        // Handle registration
-        registerForm.addEventListener('submit', async (e) => {
+        registerForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            
             const username = document.getElementById('newUsername').value;
             const password = document.getElementById('newPassword').value;
 
-            const response = await fetch('http://localhost:5000/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ username, password })
-            });
-
-            if (response.ok) {
-                alert('Registration successful! Please log in.');
-                showLoginForm(); // Show the login form after successful registration
+            let storedUsers = JSON.parse(localStorage.getItem('users')) || {};
+            if (storedUsers[username]) {
+                alert('Username already exists!');
             } else {
-                alert('Error registering user.');
+                storedUsers[username] = password;
+                localStorage.setItem('users', JSON.stringify(storedUsers));
+                alert('Registration successful! Please log in.');
+                showLoginForm();
             }
         });
 
-        // Handle logout
         function logout() {
-            localStorage.removeItem('authToken'); // Remove token from localStorage
-            checkLoginStatus(); // Show login section again
+            localStorage.removeItem('authToken');
+            checkLoginStatus();
         }
 
-        // Show the login form again after registration
         function showLoginForm() {
             registerSection.style.display = 'none';
             loginForm.style.display = 'block';
         }
 
-        // On page load, check if user is logged in
         checkLoginStatus();
     </script>
 
