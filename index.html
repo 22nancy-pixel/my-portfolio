@@ -3,204 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Login Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* Example of your portfolio design styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
+            background: linear-gradient(135deg, #d16ba5, #86a8e7, #5ffbf1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
-        .header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
+        .login-container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
             text-align: center;
+            width: 350px;
         }
 
-        .portfolio-content {
-            margin: 20px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        .login-container .profile-icon {
+            background: #1c1c1c;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 15px;
         }
 
-        .auth-section, .portfolio-section {
-            display: none;
+        .login-container .profile-icon img {
+            width: 40px;
+            height: 40px;
         }
 
-        .auth-section.active, .portfolio-section.active {
-            display: block;
-        }
-
-        .error-message {
-            color: red;
-            display: none;
-        }
-
-        .button {
-            padding: 10px 20px;
-            background-color: #333;
-            color: white;
+        .input-box {
+            background: rgba(255, 255, 255, 0.3);
             border: none;
-            cursor: pointer;
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
             border-radius: 5px;
+            font-size: 16px;
         }
 
-        .button:hover {
-            background-color: #555;
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #fff;
         }
+
+        .login-btn {
+            background: #1c1c1c;
+            color: #fff;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .login-btn:hover {
+            background: #333;
+        }
+
+        .register-link {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #fff;
+        }
+
     </style>
 </head>
 <body>
 
-    <!-- Login/Registration Form Section -->
-    <div id="auth-section" class="auth-section active">
-        <h2>Login to Access Portfolio</h2>
-        
-        <form id="loginForm">
-            <div>
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+    <div class="login-container">
+        <div class="profile-icon">
+            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="User Icon">
+        </div>
+        <h2 style="color: white;">Login</h2>
+        <form>
+            <input type="text" placeholder="Email ID" class="input-box" required>
+            <input type="password" placeholder="Password" class="input-box" required>
+            <div class="remember-forgot">
+                <label><input type="checkbox"> Remember me</label>
+                <a href="#" style="color: white; text-decoration: none;">Forgot Password?</a>
             </div>
-            
-            <div>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-
-            <button class="button" type="submit">Login</button>
+            <button type="submit" class="login-btn">Login</button>
         </form>
-
-        <p id="errorMessage" class="error-message">Invalid username or password.</p>
-        
-        <button class="button" onclick="showRegisterForm()">Register</button>
-
-        <!-- Registration Form (Hidden by default) -->
-        <div id="register-form" style="display: none;">
-            <h3>Register</h3>
-            <form id="registerForm">
-                <div>
-                    <label for="newUsername">Username:</label>
-                    <input type="text" id="newUsername" name="newUsername" required>
-                </div>
-                
-                <div>
-                    <label for="newPassword">Password:</label>
-                    <input type="password" id="newPassword" name="newPassword" required>
-                </div>
-
-                <button class="button" type="submit">Register</button>
-            </form>
-        </div>
+        <p class="register-link">Don't have an account? <a href="#" style="color: white; text-decoration: none;">Register</a></p>
     </div>
-
-    <!-- Portfolio Section -->
-    <div id="portfolio-section" class="portfolio-section">
-        <div class="header">
-            <h1>Welcome to My Portfolio</h1>
-        </div>
-        <div class="portfolio-content">
-            <h2>About Me</h2>
-            <p>This is my portfolio where I showcase all my projects and accomplishments.</p>
-            <p>Here's some work I have done...</p>
-
-            <!-- Your actual portfolio content -->
-            <h3>Project 1: Web Development</h3>
-            <p>Description of the project...</p>
-            
-            <h3>Project 2: Mobile App</h3>
-            <p>Description of the project...</p>
-            
-            <button class="button" onclick="logout()">Logout</button>
-        </div>
-    </div>
-
-    <script>
-        const loginForm = document.getElementById('loginForm');
-        const registerForm = document.getElementById('registerForm');
-        const errorMessage = document.getElementById('errorMessage');
-        const authSection = document.getElementById('auth-section');
-        const portfolioSection = document.getElementById('portfolio-section');
-        const registerSection = document.getElementById('register-form');
-
-        function checkLoginStatus() {
-            const token = localStorage.getItem('authToken');
-            
-            if (token) {
-                authSection.classList.remove('active');
-                portfolioSection.classList.add('active');
-            } else {
-                authSection.classList.add('active');
-                portfolioSection.classList.remove('active');
-            }
-        }
-
-        function showRegisterForm() {
-            registerSection.style.display = 'block';
-            loginForm.style.display = 'none';
-        }
-
-        loginForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            const response = await fetch('http://localhost:5000/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ username, password })
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                localStorage.setItem('authToken', data.token);
-                checkLoginStatus();
-            } else {
-                errorMessage.style.display = 'block';
-            }
-        });
-
-        registerForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const username = document.getElementById('newUsername').value;
-            const password = document.getElementById('newPassword').value;
-
-            const response = await fetch('http://localhost:5000/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ username, password })
-            });
-
-            if (response.ok) {
-                alert('Registration successful! Please log in.');
-                showLoginForm();
-            } else {
-                alert('Error registering user.');
-            }
-        });
-
-        function logout() {
-            localStorage.removeItem('authToken');
-            checkLoginStatus();
-        }
-
-        function showLoginForm() {
-            registerSection.style.display = 'none';
-            loginForm.style.display = 'block';
-        }
-
-        checkLoginStatus();
-    </script>
 
 </body>
 </html>
