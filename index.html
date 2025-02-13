@@ -61,7 +61,7 @@
             color: #fff;
         }
 
-        .login-btn {
+        .login-btn, .register-btn {
             background: #1c1c1c;
             color: #fff;
             border: none;
@@ -73,7 +73,7 @@
             margin-top: 10px;
         }
 
-        .login-btn:hover {
+        .login-btn:hover, .register-btn:hover {
             background: #333;
         }
 
@@ -82,7 +82,6 @@
             font-size: 14px;
             color: #fff;
         }
-
     </style>
 </head>
 <body>
@@ -92,17 +91,36 @@
             <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="User Icon">
         </div>
         <h2 style="color: white;">Login</h2>
-        <form>
-            <input type="text" placeholder="Email ID" class="input-box" required>
-            <input type="password" placeholder="Password" class="input-box" required>
+        <form onsubmit="return handleLogin(event)">
+            <input type="text" id="username" placeholder="Username" class="input-box" required>
+            <input type="password" id="password" placeholder="Password" class="input-box" required>
             <div class="remember-forgot">
-                <label><input type="checkbox"> Remember me</label>
+                <label><input type="checkbox" id="rememberMe"> Remember me</label>
                 <a href="#" style="color: white; text-decoration: none;">Forgot Password?</a>
             </div>
             <button type="submit" class="login-btn">Login</button>
         </form>
-        <p class="register-link">Don't have an account? <a href="#" style="color: white; text-decoration: none;">Register</a></p>
+        <p class="register-link">Don't have an account? <button class="register-btn" onclick="handleRegister()">Register</button></p>
     </div>
+
+    <script>
+        function handleLogin(event) {
+            event.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const rememberMe = document.getElementById("rememberMe").checked;
+            
+            if(username === "admin" && password === "password") {
+                alert("Login Successful!");
+            } else {
+                alert("Invalid Username or Password");
+            }
+        }
+
+        function handleRegister() {
+            alert("Redirecting to registration page...");
+        }
+    </script>
 
 </body>
 </html>
