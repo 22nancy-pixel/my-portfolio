@@ -1,80 +1,197 @@
-<!-- Portfolio Page -->
-<div class="portfolio-container">
-    <h1>Welcome to My Portfolio!</h1>
-    <p><strong>Name:</strong> Nancy El Orm</p>
-    <p><strong>Profession:</strong> Senior Computer Science Student</p>
-    <p><strong>Bio:</strong> Open to customization</p>
-    <p><strong>Skills:</strong> MATLAB, Python, Google Sheets, C++, JavaScript, Kotlin, HTML, Visual Studio, Android Studio, GitHub, MS Excel, PowerPoint, Word</p>
-    <p><strong>Projects:</strong> None</p>
-    <p><strong>Education:</strong> Bachelor's degree at NDU (final year)</p>
-    <p><strong>Experience:</strong> 
-        <ul>
-            <li>IT at Mir Amin Palace Hotel (Oct 2023 - Oct 2024)</li>
-            <li>Internship at Park Innovation (Oct 2024 - Feb 2025)</li>
-        </ul>
-    </p>
-    <p><strong>Contact Info:</strong> 
-        <ul>
-            <li>Phone: +961 81 860206</li>
-            <li>Email: nancyelorm11@gmail.com</li>
-        </ul>
-    </p>
-    <button class="portfolio-btn" onclick="logout()">Logout</button>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Add existing CSS here */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #d16ba5, #86a8e7, #5ffbf1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-<style>
-    .portfolio-container {
-        width: 100%;
-        max-width: 800px;
-        background-color: #ffffff;
-        padding: 30px;
-        border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        display: none;
-        margin-top: 20px;
-        color: #444;
-    }
+        .login-container, .register-container, .portfolio-container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            width: 350px;
+            display: none;
+        }
 
-    .portfolio-container h1 {
-        text-align: center;
-        font-size: 32px;
-        margin-bottom: 25px;
-        color: #333;
-    }
+        .login-container.active, .register-container.active, .portfolio-container.active {
+            display: block;
+        }
 
-    .portfolio-container p {
-        font-size: 16px;
-        margin-bottom: 15px;
-    }
+        .profile-icon {
+            background: #1c1c1c;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 15px;
+        }
 
-    .portfolio-container ul {
-        margin-left: 20px;
-        list-style-type: disc;
-        font-size: 16px;
-        color: #555;
-    }
+        .profile-icon img {
+            width: 40px;
+            height: 40px;
+        }
 
-    .portfolio-btn {
-        background-color: #f44336;
-        color: white;
-        padding: 14px;
-        width: 100%;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 16px;
-        margin-top: 20px;
-        transition: 0.3s ease;
-    }
+        .input-box {
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 5px;
+            font-size: 16px;
+        }
 
-    .portfolio-btn:hover {
-        background-color: #e53935;
-    }
-</style>
+        .login-btn, .register-btn {
+            background: #1c1c1c;
+            color: #fff;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
 
-<script>
-    function logout() {
-        // Log the user out by redirecting to the login page
-        document.querySelector(".portfolio-container").classList.remove("active");
-        document.querySelector(".login-container").classList.add("active");
-    }
-</script>
+        .login-btn:hover, .register-btn:hover {
+            background: #333;
+        }
+
+        .portfolio-btn {
+            background: #333;
+            color: #fff;
+            padding: 12px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .portfolio-container h1, .portfolio-container p {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Login Page -->
+    <div class="login-container active">
+        <div class="profile-icon">
+            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="User Icon">
+        </div>
+        <h2 style="color: white;">Login</h2>
+        <form onsubmit="return handleLogin(event)">
+            <input type="text" id="username" placeholder="Username" class="input-box" required>
+            <input type="password" id="password" placeholder="Password" class="input-box" required>
+            <div class="remember-forgot">
+                <label><input type="checkbox" id="rememberMe"> Remember me</label>
+                <a href="#" style="color: white; text-decoration: none;">Forgot Password?</a>
+            </div>
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+        <p class="register-link">Don't have an account? <button class="register-btn" onclick="showRegisterForm()">Register</button></p>
+    </div>
+
+    <!-- Register Page -->
+    <div class="register-container">
+        <h2 style="color: white;">Register</h2>
+        <form onsubmit="return handleRegister(event)">
+            <input type="text" id="registerUsername" placeholder="Username" class="input-box" required>
+            <input type="password" id="registerPassword" placeholder="Password" class="input-box" required>
+            <input type="password" id="confirmPassword" placeholder="Confirm Password" class="input-box" required>
+            <button type="submit" class="register-btn">Create Account</button>
+        </form>
+        <p class="register-link">Already have an account? <button class="register-btn" onclick="showLoginForm()">Login</button></p>
+    </div>
+
+    <!-- Portfolio Page -->
+    <div class="portfolio-container">
+        <h1>Welcome to My Portfolio!</h1>
+        <p><strong>Name:</strong> Nancy El Orm</p>
+        <p><strong>Profession:</strong> Senior Computer Science Student</p>
+        <p><strong>Bio:</strong> Open to customization</p>
+        <p><strong>Skills:</strong> MATLAB, Python, Google Sheets, C++, JavaScript, Kotlin, HTML, Visual Studio, Android Studio, GitHub, MS Excel, PowerPoint, Word</p>
+        <p><strong>Projects:</strong> None</p>
+        <p><strong>Education:</strong> Bachelor's degree at NDU (final year)</p>
+        <p><strong>Experience:</strong> 
+            <ul>
+                <li>IT at Mir Amin Palace Hotel (Oct 2023 - Oct 2024)</li>
+                <li>Internship at Park Innovation (Oct 2024 - Feb 2025)</li>
+            </ul>
+        </p>
+        <p><strong>Contact Info:</strong> 
+            <ul>
+                <li>Phone: +961 81 860206</li>
+                <li>Email: nancyelorm11@gmail.com</li>
+            </ul>
+        </p>
+        <button class="portfolio-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        function handleLogin(event) {
+            event.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            
+            if (localStorage.getItem(username) && localStorage.getItem(username) === password) {
+                document.querySelector(".login-container").classList.remove("active");
+                document.querySelector(".portfolio-container").classList.add("active");
+            } else {
+                alert("Invalid Username or Password");
+            }
+        }
+
+        function showRegisterForm() {
+            document.querySelector(".login-container").classList.remove("active");
+            document.querySelector(".register-container").classList.add("active");
+        }
+
+        function showLoginForm() {
+            document.querySelector(".register-container").classList.remove("active");
+            document.querySelector(".login-container").classList.add("active");
+        }
+
+        function handleRegister(event) {
+            event.preventDefault();
+            const registerUsername = document.getElementById("registerUsername").value;
+            const registerPassword = document.getElementById("registerPassword").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+
+            if (registerPassword === confirmPassword) {
+                localStorage.setItem(registerUsername, registerPassword);
+                alert("Registration Successful! You can now log in.");
+                showLoginForm();
+            } else {
+                alert("Passwords do not match!");
+            }
+        }
+
+        function logout() {
+            // Log the user out by redirecting to the login page
+            document.querySelector(".portfolio-container").classList.remove("active");
+            document.querySelector(".login-container").classList.add("active");
+        }
+    </script>
+
+</body>
+</html>
