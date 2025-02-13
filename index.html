@@ -18,7 +18,7 @@
             height: 100vh;
         }
 
-        .login-container {
+        .login-container, .register-container {
             background: rgba(255, 255, 255, 0.2);
             padding: 30px;
             border-radius: 15px;
@@ -26,6 +26,11 @@
             backdrop-filter: blur(10px);
             text-align: center;
             width: 350px;
+            display: none;
+        }
+
+        .login-container.active, .register-container.active {
+            display: block;
         }
 
         .login-container .profile-icon {
@@ -82,11 +87,16 @@
             font-size: 14px;
             color: #fff;
         }
+
+        .register-container button {
+            margin-top: 10px;
+            background: #333;
+        }
     </style>
 </head>
 <body>
 
-    <div class="login-container">
+    <div class="login-container active">
         <div class="profile-icon">
             <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="User Icon">
         </div>
@@ -100,7 +110,18 @@
             </div>
             <button type="submit" class="login-btn">Login</button>
         </form>
-        <p class="register-link">Don't have an account? <button class="register-btn" onclick="handleRegister()">Register</button></p>
+        <p class="register-link">Don't have an account? <button class="register-btn" onclick="showRegisterForm()">Register</button></p>
+    </div>
+
+    <div class="register-container">
+        <h2 style="color: white;">Register</h2>
+        <form onsubmit="return handleRegister(event)">
+            <input type="text" id="registerUsername" placeholder="Username" class="input-box" required>
+            <input type="password" id="registerPassword" placeholder="Password" class="input-box" required>
+            <input type="password" id="confirmPassword" placeholder="Confirm Password" class="input-box" required>
+            <button type="submit" class="register-btn">Create Account</button>
+        </form>
+        <p class="register-link">Already have an account? <button class="register-btn" onclick="showLoginForm()">Login</button></p>
     </div>
 
     <script>
@@ -110,15 +131,36 @@
             const password = document.getElementById("password").value;
             const rememberMe = document.getElementById("rememberMe").checked;
             
-            if(username === "admin" && password === "password") {
+            if (localStorage.getItem(username) && localStorage.getItem(username) === password) {
                 alert("Login Successful!");
             } else {
                 alert("Invalid Username or Password");
             }
         }
 
-        function handleRegister() {
-            alert("Redirecting to registration page...");
+        function showRegisterForm() {
+            document.querySelector(".login-container").classList.remove("active");
+            document.querySelector(".register-container").classList.add("active");
+        }
+
+        function showLoginForm() {
+            document.querySelector(".register-container").classList.remove("active");
+            document.querySelector(".login-container").classList.add("active");
+        }
+
+        function handleRegister(event) {
+            event.preventDefault();
+            const registerUsername = document.getElementById("registerUsername").value;
+            const registerPassword = document.getElementById("registerPassword").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+
+            if (registerPassword === confirmPassword) {
+                localStorage.setItem(registerUsername, registerPassword);
+                alert("Registration Successful! You can now log in.");
+                showLoginForm();
+            } else {
+                alert("Passwords do not match!");
+            }
         }
     </script>
 
