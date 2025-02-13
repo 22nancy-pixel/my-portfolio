@@ -4,117 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-
-        .header {
-            background: linear-gradient(to right, #4A90E2, #9013FE);
-            color: white;
-            text-align: center;
-            padding: 20px;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 40px auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #4A90E2;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .button:hover {
-            background-color: #357ABD;
-        }
-
-        .login-section, .portfolio-section {
-            display: none;
-            text-align: center;
-        }
-
-        .login-section.active, .portfolio-section.active {
-            display: block;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="header">Welcome to My Portfolio</div>
-    <div class="container">
-        <div id="login-section" class="login-section active">
-            <h2>Login to Access Portfolio</h2>
-            <form id="loginForm">
-                <input type="text" id="username" placeholder="Username" required><br><br>
-                <input type="password" id="password" placeholder="Password" required><br><br>
-                <button class="button" type="submit">Login</button>
-            </form>
-            <p id="errorMessage" style="color: red; display: none;">Invalid username or password.</p>
-        </div>
+    <div id="auth-section" class="auth-section active">
+        <h2>Login to Access Portfolio</h2>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p id="errorMessage" class="error-message">Invalid username or password.</p>
+        <p>Don't have an account? <button id="showRegister">Register</button></p>
 
-        <div id="portfolio-section" class="portfolio-section">
-            <h2>Hi, I'm Nancy El Orm</h2>
-            <p>Senior Computer Science Student | IT Coordinator | Web Developer</p>
-            <a href="#about" class="button">About Me</a>
-            <a href="#skills" class="button">Skills</a>
-            <a href="#contact" class="button">Contact</a>
-            <br><br>
-            <button class="button" onclick="logout()">Logout</button>
+        <div id="register-form" style="display: none;">
+            <h3>Register</h3>
+            <form id="registerForm">
+                <label for="newUsername">Username:</label>
+                <input type="text" id="newUsername" required>
+                <label for="newPassword">Password:</label>
+                <input type="password" id="newPassword" required>
+                <button type="submit">Register</button>
+            </form>
         </div>
     </div>
 
+    <div id="portfolio-section" class="portfolio-section">
+        <h1>Welcome to My Portfolio</h1>
+        <button id="logout">Logout</button>
+        <!-- Your existing portfolio content -->
+    </div>
+
     <script>
-        const loginForm = document.getElementById('loginForm');
-        const loginSection = document.getElementById('login-section');
-        const portfolioSection = document.getElementById('portfolio-section');
-        const errorMessage = document.getElementById('errorMessage');
-
-        function checkLoginStatus() {
-            const token = localStorage.getItem('authToken');
-            if (token) {
-                loginSection.classList.remove('active');
-                portfolioSection.classList.add('active');
-            }
-        }
-
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            if (username === "nancy" && password === "password123") {
-                localStorage.setItem('authToken', 'valid');
-                checkLoginStatus();
-            } else {
-                errorMessage.style.display = 'block';
-            }
+        document.getElementById('showRegister').addEventListener('click', function() {
+            document.getElementById('register-form').style.display = 'block';
         });
-
-        function logout() {
-            localStorage.removeItem('authToken');
-            loginSection.classList.add('active');
-            portfolioSection.classList.remove('active');
-        }
-
-        checkLoginStatus();
     </script>
 </body>
 </html>
