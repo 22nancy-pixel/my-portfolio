@@ -11,30 +11,35 @@
         <button type="submit">Login</button>
     </form>
     <p id="login-error" style="color: red; display: none;">Invalid username or password. Please try again.</p>
+
+    <button type="button" id="show-register-btn">Don't have an account? Register</button>
+</div>
+
+<!-- Registration Page (hidden initially) -->
+<div class="register-container hidden">
+    <h2>Register</h2>
+    <form id="register-form">
+        <label for="new-username">Username:</label>
+        <input type="text" id="new-username" required>
+
+        <label for="new-password">Password:</label>
+        <input type="password" id="new-password" required>
+
+        <button type="submit">Register</button>
+    </form>
+    <p id="register-error" style="color: red; display: none;">Registration failed. Please try again.</p>
+
+    <button type="button" id="show-login-btn">Already have an account? Login</button>
 </div>
 
 <!-- Portfolio Page (hidden initially) -->
 <div class="portfolio-container hidden">
-    <div class="header">
-        <h1>PORTFOLIO</h1>
-        <h2>Nancy El Orm</h2>
-        <p class="description">I am a Senior Computer Science Student at Notre Dame University with a passion for technology and problem-solving. I specialize in web and mobile app development and am always eager to learn and grow in my field.</p>
-        <div class="contact-info">
-            <p><strong>Location:</strong> Beirut, Lebanon</p>
-            <p><strong>Phone Number:</strong> 81/860206</p>
-            <p><strong>Email:</strong> <a href="mailto:nancyelorm11@gmail.com" style="color: #fff;">nancyelorm11@gmail.com</a></p>
-        </div>
-    </div>
-    
-    <div class="content">
-        <!-- Portfolio content goes here (same as previous portfolio code) -->
-    </div>
-
-    <button class="logout-btn" onclick="logout()">Logout</button>
+    <!-- Your portfolio content here (same as before) -->
+    <h1>Welcome to Your Portfolio</h1>
+    <button onclick="logout()">Logout</button>
 </div>
 
 <style>
-    /* Same styles you had earlier */
     body {
         font-family: 'Poppins', sans-serif;
         margin: 0;
@@ -47,26 +52,58 @@
         display: none;
     }
 
-    /* Add any other styles you had for login and portfolio pages */
+    /* Add more styles as needed */
 </style>
 
 <script>
-    const correctUsername = 'nancy';  // Replace with your actual username
-    const correctPassword = 'password123';  // Replace with your actual password
+    // Handle switching between login and registration forms
+    document.getElementById('show-register-btn').addEventListener('click', function() {
+        document.querySelector(".login-container").classList.add("hidden");
+        document.querySelector(".register-container").classList.remove("hidden");
+    });
 
-    // Login form submission
+    document.getElementById('show-login-btn').addEventListener('click', function() {
+        document.querySelector(".register-container").classList.add("hidden");
+        document.querySelector(".login-container").classList.remove("hidden");
+    });
+
+    // Registration logic
+    document.getElementById('register-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const newUsername = document.getElementById('new-username').value;
+        const newPassword = document.getElementById('new-password').value;
+
+        if (newUsername && newPassword) {
+            // Save the username and password in localStorage
+            localStorage.setItem('username', newUsername);
+            localStorage.setItem('password', newPassword);
+
+            // Hide registration and show login form
+            document.querySelector(".register-container").classList.add("hidden");
+            document.querySelector(".login-container").classList.remove("hidden");
+        } else {
+            document.getElementById('register-error').style.display = 'block';
+        }
+    });
+
+    // Login logic
     document.getElementById('login-form').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent form submission
+        event.preventDefault();
 
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
 
-        if (username === correctUsername && password === correctPassword) {
-            // Hide login page and show portfolio
+        // Retrieve stored credentials from localStorage
+        const storedUsername = localStorage.getItem('username');
+        const storedPassword = localStorage.getItem('password');
+
+        if (username === storedUsername && password === storedPassword) {
+            // Successful login, show portfolio and hide login form
             document.querySelector(".login-container").classList.add("hidden");
             document.querySelector(".portfolio-container").classList.remove("hidden");
         } else {
-            // Display error
+            // Show error message if credentials are incorrect
             document.getElementById('login-error').style.display = 'block';
         }
     });
