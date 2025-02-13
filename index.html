@@ -1,197 +1,167 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        /* Add existing CSS here */
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #d16ba5, #86a8e7, #5ffbf1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .login-container, .register-container, .portfolio-container {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(10px);
-            text-align: center;
-            width: 350px;
-            display: none;
-        }
-
-        .login-container.active, .register-container.active, .portfolio-container.active {
-            display: block;
-        }
-
-        .profile-icon {
-            background: #1c1c1c;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 auto 15px;
-        }
-
-        .profile-icon img {
-            width: 40px;
-            height: 40px;
-        }
-
-        .input-box {
-            background: rgba(255, 255, 255, 0.3);
-            border: none;
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        .login-btn, .register-btn {
-            background: #1c1c1c;
-            color: #fff;
-            border: none;
-            padding: 12px;
-            width: 100%;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 10px;
-        }
-
-        .login-btn:hover, .register-btn:hover {
-            background: #333;
-        }
-
-        .portfolio-btn {
-            background: #333;
-            color: #fff;
-            padding: 12px;
-            width: 100%;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .portfolio-container h1, .portfolio-container p {
-            color: white;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Login Page -->
-    <div class="login-container active">
-        <div class="profile-icon">
-            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="User Icon">
+<!-- Portfolio Page -->
+<div class="portfolio-container">
+    <div class="header">
+        <h1>PORTFOLIO</h1>
+        <h2>YOUR NAME HERE</h2>
+        <p class="description">Lorem ipsum dolor sit amet, cons ectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+        <div class="contact-info">
+            <p><strong>Location:</strong> Lorem ipsum dolor sit amet.</p>
+            <p><strong>Phone Number:</strong> Lorem ipsum dolor sit amet.</p>
+            <p><strong>Website:</strong> Lorem ipsum dolor sit amet.</p>
         </div>
-        <h2 style="color: white;">Login</h2>
-        <form onsubmit="return handleLogin(event)">
-            <input type="text" id="username" placeholder="Username" class="input-box" required>
-            <input type="password" id="password" placeholder="Password" class="input-box" required>
-            <div class="remember-forgot">
-                <label><input type="checkbox" id="rememberMe"> Remember me</label>
-                <a href="#" style="color: white; text-decoration: none;">Forgot Password?</a>
+    </div>
+    
+    <div class="content">
+        <div class="project">
+            <h3>PROJECT NAME</h3>
+            <p><strong>Company Name:</strong> Lorem ipsum</p>
+            <p><strong>Project Location:</strong> Lorem ipsum</p>
+        </div>
+
+        <div class="table-of-contents">
+            <h3>TABLE OF CONTENTS</h3>
+            <ol>
+                <li>Your Name Here</li>
+                <li>Your Name Here</li>
+                <li>Your Name Here</li>
+                <li>Your Name Here</li>
+                <li>Your Name Here</li>
+                <li>Your Name Here</li>
+            </ol>
+        </div>
+
+        <div class="team">
+            <h3>OUR EXPERTS TEAM</h3>
+            <div class="experts">
+                <div class="expert">
+                    <img src="https://via.placeholder.com/100" alt="Expert 1">
+                    <p>Expert 1</p>
+                </div>
+                <div class="expert">
+                    <img src="https://via.placeholder.com/100" alt="Expert 2">
+                    <p>Expert 2</p>
+                </div>
+                <div class="expert">
+                    <img src="https://via.placeholder.com/100" alt="Expert 3">
+                    <p>Expert 3</p>
+                </div>
             </div>
-            <button type="submit" class="login-btn">Login</button>
-        </form>
-        <p class="register-link">Don't have an account? <button class="register-btn" onclick="showRegisterForm()">Register</button></p>
+        </div>
+
+        <div class="testimonials">
+            <h3>CLIENT TESTIMONIALS</h3>
+            <p>"Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Lorem ipsum dolor sit amet."</p>
+            <p>"Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Lorem ipsum dolor sit amet."</p>
+            <p>"Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Lorem ipsum dolor sit amet."</p>
+        </div>
     </div>
 
-    <!-- Register Page -->
-    <div class="register-container">
-        <h2 style="color: white;">Register</h2>
-        <form onsubmit="return handleRegister(event)">
-            <input type="text" id="registerUsername" placeholder="Username" class="input-box" required>
-            <input type="password" id="registerPassword" placeholder="Password" class="input-box" required>
-            <input type="password" id="confirmPassword" placeholder="Confirm Password" class="input-box" required>
-            <button type="submit" class="register-btn">Create Account</button>
-        </form>
-        <p class="register-link">Already have an account? <button class="register-btn" onclick="showLoginForm()">Login</button></p>
-    </div>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+</div>
 
-    <!-- Portfolio Page -->
-    <div class="portfolio-container">
-        <h1>Welcome to My Portfolio!</h1>
-        <p><strong>Name:</strong> Nancy El Orm</p>
-        <p><strong>Profession:</strong> Senior Computer Science Student</p>
-        <p><strong>Bio:</strong> Open to customization</p>
-        <p><strong>Skills:</strong> MATLAB, Python, Google Sheets, C++, JavaScript, Kotlin, HTML, Visual Studio, Android Studio, GitHub, MS Excel, PowerPoint, Word</p>
-        <p><strong>Projects:</strong> None</p>
-        <p><strong>Education:</strong> Bachelor's degree at NDU (final year)</p>
-        <p><strong>Experience:</strong> 
-            <ul>
-                <li>IT at Mir Amin Palace Hotel (Oct 2023 - Oct 2024)</li>
-                <li>Internship at Park Innovation (Oct 2024 - Feb 2025)</li>
-            </ul>
-        </p>
-        <p><strong>Contact Info:</strong> 
-            <ul>
-                <li>Phone: +961 81 860206</li>
-                <li>Email: nancyelorm11@gmail.com</li>
-            </ul>
-        </p>
-        <button class="portfolio-btn" onclick="logout()">Logout</button>
-    </div>
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #111;
+        color: white;
+    }
 
-    <script>
-        function handleLogin(event) {
-            event.preventDefault();
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
-            
-            if (localStorage.getItem(username) && localStorage.getItem(username) === password) {
-                document.querySelector(".login-container").classList.remove("active");
-                document.querySelector(".portfolio-container").classList.add("active");
-            } else {
-                alert("Invalid Username or Password");
-            }
-        }
+    .portfolio-container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 50px auto;
+        padding: 30px;
+        background-color: #1a1a1a;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
 
-        function showRegisterForm() {
-            document.querySelector(".login-container").classList.remove("active");
-            document.querySelector(".register-container").classList.add("active");
-        }
+    .header {
+        text-align: center;
+        border-bottom: 2px solid #333;
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+    }
 
-        function showLoginForm() {
-            document.querySelector(".register-container").classList.remove("active");
-            document.querySelector(".login-container").classList.add("active");
-        }
+    .header h1 {
+        font-size: 60px;
+        font-weight: 600;
+    }
 
-        function handleRegister(event) {
-            event.preventDefault();
-            const registerUsername = document.getElementById("registerUsername").value;
-            const registerPassword = document.getElementById("registerPassword").value;
-            const confirmPassword = document.getElementById("confirmPassword").value;
+    .header h2 {
+        font-size: 28px;
+        margin-top: 10px;
+    }
 
-            if (registerPassword === confirmPassword) {
-                localStorage.setItem(registerUsername, registerPassword);
-                alert("Registration Successful! You can now log in.");
-                showLoginForm();
-            } else {
-                alert("Passwords do not match!");
-            }
-        }
+    .description {
+        font-size: 16px;
+        color: #ccc;
+        margin: 15px 0;
+    }
 
-        function logout() {
-            // Log the user out by redirecting to the login page
-            document.querySelector(".portfolio-container").classList.remove("active");
-            document.querySelector(".login-container").classList.add("active");
-        }
-    </script>
+    .contact-info p {
+        font-size: 14px;
+        color: #ddd;
+    }
 
-</body>
-</html>
+    .content {
+        margin-top: 40px;
+    }
+
+    .project, .table-of-contents, .team, .testimonials {
+        margin-bottom: 40px;
+    }
+
+    .project h3, .table-of-contents h3, .team h3, .testimonials h3 {
+        font-size: 24px;
+        color: #fff;
+        margin-bottom: 10px;
+    }
+
+    .table-of-contents ol {
+        list-style-type: decimal;
+        padding-left: 20px;
+    }
+
+    .experts {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .expert img {
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+
+    .expert p {
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .logout-btn {
+        background-color: #f44336;
+        color: white;
+        padding: 14px;
+        width: 100%;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: 0.3s ease;
+        border: none;
+    }
+
+    .logout-btn:hover {
+        background-color: #e53935;
+    }
+</style>
+
+<script>
+    function logout() {
+        document.querySelector(".portfolio-container").classList.add("hidden");
+        document.querySelector(".login-container").classList.remove("hidden");
+    }
+</script>
