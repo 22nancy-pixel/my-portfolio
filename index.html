@@ -4,123 +4,180 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* Add existing CSS here */
-        body {
-            font-family: 'Poppins', sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #d16ba5, #86a8e7, #5ffbf1);
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f3f4f6;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
         }
 
-        .login-container, .register-container, .portfolio-container {
-            background: rgba(255, 255, 255, 0.2);
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background-color: #ffffff;
             padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .container h2 {
             text-align: center;
-            width: 350px;
-            display: none;
+            margin-bottom: 20px;
+            color: #333;
         }
 
-        .login-container.active, .register-container.active, .portfolio-container.active {
-            display: block;
-        }
-
-        .profile-icon {
-            background: #1c1c1c;
+        .container .profile-icon {
+            background-color: #4CAF50;
             width: 70px;
             height: 70px;
             border-radius: 50%;
+            margin: 0 auto 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 0 auto 15px;
         }
 
-        .profile-icon img {
+        .container .profile-icon img {
             width: 40px;
             height: 40px;
         }
 
         .input-box {
-            background: rgba(255, 255, 255, 0.3);
-            border: none;
             width: 100%;
-            padding: 12px;
-            margin: 8px 0;
+            padding: 14px;
+            margin: 10px 0;
             border-radius: 5px;
+            border: 1px solid #ddd;
             font-size: 16px;
+            background-color: #f9f9f9;
+        }
+
+        .input-box:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .remember-forgot a {
+            color: #4CAF50;
+            text-decoration: none;
         }
 
         .login-btn, .register-btn {
-            background: #1c1c1c;
-            color: #fff;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px;
             border: none;
-            padding: 12px;
             width: 100%;
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
-            margin-top: 10px;
+            margin-top: 20px;
+            transition: 0.3s ease;
         }
 
         .login-btn:hover, .register-btn:hover {
-            background: #333;
+            background-color: #45a049;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .register-link a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .portfolio-container {
+            width: 100%;
+            max-width: 800px;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        .portfolio-container h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .portfolio-container p {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #555;
         }
 
         .portfolio-btn {
-            background: #333;
-            color: #fff;
+            background-color: #f44336;
+            color: white;
             padding: 12px;
             width: 100%;
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
+            margin-top: 20px;
+            transition: 0.3s ease;
         }
 
-        .portfolio-container h1, .portfolio-container p {
-            color: white;
+        .portfolio-btn:hover {
+            background-color: #e53935;
         }
+
     </style>
 </head>
 <body>
 
     <!-- Login Page -->
-    <div class="login-container active">
+    <div class="container login-container active">
         <div class="profile-icon">
             <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="User Icon">
         </div>
-        <h2 style="color: white;">Login</h2>
+        <h2>Login</h2>
         <form onsubmit="return handleLogin(event)">
             <input type="text" id="username" placeholder="Username" class="input-box" required>
             <input type="password" id="password" placeholder="Password" class="input-box" required>
             <div class="remember-forgot">
                 <label><input type="checkbox" id="rememberMe"> Remember me</label>
-                <a href="#" style="color: white; text-decoration: none;">Forgot Password?</a>
+                <a href="#">Forgot Password?</a>
             </div>
             <button type="submit" class="login-btn">Login</button>
         </form>
-        <p class="register-link">Don't have an account? <button class="register-btn" onclick="showRegisterForm()">Register</button></p>
+        <p class="register-link">Don't have an account? <a href="#" onclick="showRegisterForm()">Register</a></p>
     </div>
 
     <!-- Register Page -->
-    <div class="register-container">
-        <h2 style="color: white;">Register</h2>
+    <div class="container register-container">
+        <h2>Register</h2>
         <form onsubmit="return handleRegister(event)">
             <input type="text" id="registerUsername" placeholder="Username" class="input-box" required>
             <input type="password" id="registerPassword" placeholder="Password" class="input-box" required>
             <input type="password" id="confirmPassword" placeholder="Confirm Password" class="input-box" required>
             <button type="submit" class="register-btn">Create Account</button>
         </form>
-        <p class="register-link">Already have an account? <button class="register-btn" onclick="showLoginForm()">Login</button></p>
+        <p class="register-link">Already have an account? <a href="#" onclick="showLoginForm()">Login</a></p>
     </div>
 
     <!-- Portfolio Page -->
