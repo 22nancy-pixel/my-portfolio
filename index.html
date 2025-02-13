@@ -240,21 +240,3 @@
     document.getElementById('register-form').addEventListener('submit', function(event) {
         event.preventDefault();
 
-        const newUsername = document.getElementById('new-username').value;
-        const newPassword = document.getElementById('new-password').value;
-
-        if (newUsername && newPassword) {
-            // Save the username and password in localStorage
-            localStorage.setItem('username', newUsername);
-            localStorage.setItem('password', newPassword);
-
-            // Hide registration and show login form
-            document.querySelector(".register-container").classList.add("hidden");
-            document.querySelector(".login-container").classList.remove("hidden");
-        } else {
-            document.getElementById('register-error').style.display = 'block';
-        }
-    });
-
-    // Login logic
-    document.getElementById('login-form').addEventListener('submit', function(event) {
