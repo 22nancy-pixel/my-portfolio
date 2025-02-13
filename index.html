@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        /* Add existing CSS here */
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
@@ -18,7 +19,7 @@
             height: 100vh;
         }
 
-        .login-container, .register-container {
+        .login-container, .register-container, .portfolio-container {
             background: rgba(255, 255, 255, 0.2);
             padding: 30px;
             border-radius: 15px;
@@ -29,11 +30,11 @@
             display: none;
         }
 
-        .login-container.active, .register-container.active {
+        .login-container.active, .register-container.active, .portfolio-container.active {
             display: block;
         }
 
-        .login-container .profile-icon {
+        .profile-icon {
             background: #1c1c1c;
             width: 70px;
             height: 70px;
@@ -44,7 +45,7 @@
             margin: 0 auto 15px;
         }
 
-        .login-container .profile-icon img {
+        .profile-icon img {
             width: 40px;
             height: 40px;
         }
@@ -57,13 +58,6 @@
             margin: 8px 0;
             border-radius: 5px;
             font-size: 16px;
-        }
-
-        .remember-forgot {
-            display: flex;
-            justify-content: space-between;
-            font-size: 12px;
-            color: #fff;
         }
 
         .login-btn, .register-btn {
@@ -82,20 +76,24 @@
             background: #333;
         }
 
-        .register-link {
-            margin-top: 10px;
-            font-size: 14px;
+        .portfolio-btn {
+            background: #333;
             color: #fff;
+            padding: 12px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
         }
 
-        .register-container button {
-            margin-top: 10px;
-            background: #333;
+        .portfolio-container h1, .portfolio-container p {
+            color: white;
         }
     </style>
 </head>
 <body>
 
+    <!-- Login Page -->
     <div class="login-container active">
         <div class="profile-icon">
             <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="User Icon">
@@ -113,6 +111,7 @@
         <p class="register-link">Don't have an account? <button class="register-btn" onclick="showRegisterForm()">Register</button></p>
     </div>
 
+    <!-- Register Page -->
     <div class="register-container">
         <h2 style="color: white;">Register</h2>
         <form onsubmit="return handleRegister(event)">
@@ -124,15 +123,39 @@
         <p class="register-link">Already have an account? <button class="register-btn" onclick="showLoginForm()">Login</button></p>
     </div>
 
+    <!-- Portfolio Page -->
+    <div class="portfolio-container">
+        <h1>Welcome to My Portfolio!</h1>
+        <p><strong>Name:</strong> Nancy El Orm</p>
+        <p><strong>Profession:</strong> Senior Computer Science Student</p>
+        <p><strong>Bio:</strong> Open to customization</p>
+        <p><strong>Skills:</strong> MATLAB, Python, Google Sheets, C++, JavaScript, Kotlin, HTML, Visual Studio, Android Studio, GitHub, MS Excel, PowerPoint, Word</p>
+        <p><strong>Projects:</strong> None</p>
+        <p><strong>Education:</strong> Bachelor's degree at NDU (final year)</p>
+        <p><strong>Experience:</strong> 
+            <ul>
+                <li>IT at Mir Amin Palace Hotel (Oct 2023 - Oct 2024)</li>
+                <li>Internship at Park Innovation (Oct 2024 - Feb 2025)</li>
+            </ul>
+        </p>
+        <p><strong>Contact Info:</strong> 
+            <ul>
+                <li>Phone: +961 81 860206</li>
+                <li>Email: nancyelorm11@gmail.com</li>
+            </ul>
+        </p>
+        <button class="portfolio-btn" onclick="logout()">Logout</button>
+    </div>
+
     <script>
         function handleLogin(event) {
             event.preventDefault();
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
-            const rememberMe = document.getElementById("rememberMe").checked;
             
             if (localStorage.getItem(username) && localStorage.getItem(username) === password) {
-                alert("Login Successful!");
+                document.querySelector(".login-container").classList.remove("active");
+                document.querySelector(".portfolio-container").classList.add("active");
             } else {
                 alert("Invalid Username or Password");
             }
@@ -161,6 +184,12 @@
             } else {
                 alert("Passwords do not match!");
             }
+        }
+
+        function logout() {
+            // Log the user out by redirecting to the login page
+            document.querySelector(".portfolio-container").classList.remove("active");
+            document.querySelector(".login-container").classList.add("active");
         }
     </script>
 
