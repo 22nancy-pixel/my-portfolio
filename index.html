@@ -10,7 +10,7 @@
 
         <button type="submit">Login</button>
     </form>
-    <p id="login-error" style="color: red; display: none;">Invalid username or password. Please try again.</p>
+    <p id="login-error" class="error-message">Invalid username or password. Please try again.</p>
 
     <button type="button" id="show-register-btn">Don't have an account? Register</button>
 </div>
@@ -27,7 +27,7 @@
 
         <button type="submit">Register</button>
     </form>
-    <p id="register-error" style="color: red; display: none;">Registration failed. Please try again.</p>
+    <p id="register-error" class="error-message">Registration failed. Please try again.</p>
 
     <button type="button" id="show-login-btn">Already have an account? Login</button>
 </div>
@@ -41,7 +41,7 @@
         <div class="contact-info">
             <p><strong>Location:</strong> Beirut, Lebanon</p>
             <p><strong>Phone Number:</strong> 81/860206</p>
-            <p><strong>Email:</strong> <a href="mailto:nancyelorm11@gmail.com" style="color: #fff;">nancyelorm11@gmail.com</a></p>
+            <p><strong>Email:</strong> <a href="mailto:nancyelorm11@gmail.com" class="link">nancyelorm11@gmail.com</a></p>
         </div>
     </div>
     
@@ -116,8 +116,8 @@
             <p>If you wish to get in touch, you can reach me through the following channels:</p>
             <ul>
                 <li><strong>Phone:</strong> 81/860206</li>
-                <li><strong>Email:</strong> <a href="mailto:nancyelorm11@gmail.com" style="color: #fff;">nancyelorm11@gmail.com</a></li>
-                <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/nancy-el-orm-528a20226" style="color: #fff;">linkedin.com/in/nancy-el-orm-528a20226</a></li>
+                <li><strong>Email:</strong> <a href="mailto:nancyelorm11@gmail.com" class="link">nancyelorm11@gmail.com</a></li>
+                <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/nancy-el-orm-528a20226" class="link">linkedin.com/in/nancy-el-orm-528a20226</a></li>
             </ul>
         </div>
     </div>
@@ -127,59 +127,138 @@
 
 <style>
     body {
-        font-family: 'Poppins', sans-serif;
+        font-family: 'Arial', sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #111;
-        color: white;
+        background-color: #f4f4f9;
+        color: #333;
     }
 
+    /* Login/Registration Container */
+    .login-container, .register-container {
+        width: 100%;
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 30px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-container h2, .register-container h2 {
+        text-align: center;
+        font-size: 26px;
+        margin-bottom: 20px;
+        color: #444;
+    }
+
+    .login-container label, .register-container label {
+        font-size: 14px;
+        color: #666;
+    }
+
+    .login-container input, .register-container input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+    }
+
+    .login-container button, .register-container button {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        color: white;
+        background-color: #5cb85c;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .login-container button:hover, .register-container button:hover {
+        background-color: #4cae4c;
+    }
+
+    .error-message {
+        color: #d9534f;
+        font-size: 14px;
+        display: none;
+        text-align: center;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    /* Portfolio Container */
     .portfolio-container {
         width: 100%;
         max-width: 1200px;
         margin: 50px auto;
         padding: 30px;
-        background-color: #1a1a1a;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     }
 
     .header {
         text-align: center;
-        border-bottom: 2px solid #333;
-        margin-bottom: 30px;
+        margin-bottom: 40px;
         padding-bottom: 20px;
+        border-bottom: 2px solid #eee;
     }
 
     .header h1 {
-        font-size: 60px;
-        font-weight: 600;
+        font-size: 40px;
+        color: #333;
+        margin-bottom: 10px;
     }
 
     .header h2 {
         font-size: 28px;
+        color: #666;
+    }
+
+    .header .description {
+        font-size: 16px;
+        color: #888;
         margin-top: 10px;
     }
 
-    .description {
-        font-size: 16px;
-        color: #ccc;
-        margin: 15px 0;
-    }
-
     .contact-info p {
-        font-size: 14px;
-        color: #ddd;
+        font-size: 16px;
+        color: #888;
+        margin: 5px 0;
     }
 
-    .content {
-        margin-top: 40px;
+    .content .section {
+        margin-bottom: 30px;
+    }
+
+    .content h4 {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .content ul {
+        list-style-type: none;
+        padding-left: 20px;
+    }
+
+    .content ul li {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 5px;
     }
 
     .table-of-contents h3 {
-        font-size: 24px;
-        color: #fff;
-        margin-bottom: 10px;
+        font-size: 20px;
+        color: #444;
+        margin-bottom: 15px;
     }
 
     .table-of-contents ol {
@@ -187,40 +266,29 @@
         padding-left: 20px;
     }
 
-    .section h4 {
-        font-size: 22px;
-        margin-bottom: 10px;
-        color: #fff;
+    .link {
+        color: #007bff;
+        text-decoration: none;
     }
 
-    .section ul {
-        list-style-type: none;
-        padding-left: 20px;
-    }
-
-    .section ul li {
-        font-size: 16px;
-        color: #ccc;
+    .link:hover {
+        text-decoration: underline;
     }
 
     .logout-btn {
-        background-color: #f44336;
+        background-color: #d9534f;
         color: white;
-        padding: 14px;
-        width: 100%;
-        border-radius: 8px;
+        padding: 12px;
+        border: none;
+        border-radius: 5px;
         cursor: pointer;
         font-size: 16px;
-        transition: 0.3s ease;
-        border: none;
+        width: 100%;
+        margin-top: 20px;
     }
 
     .logout-btn:hover {
-        background-color: #e53935;
-    }
-
-    .hidden {
-        display: none;
+        background-color: #c9302c;
     }
 </style>
 
