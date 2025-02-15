@@ -1,13 +1,39 @@
 <!-- Login Page -->
-<div class="login-container" id="loginPage">
+<div class="login-container">
     <h2>Login</h2>
-    <input type="text" id="username" placeholder="Username">
-    <input type="password" id="password" placeholder="Password">
-    <button onclick="login()">Login</button>
+    <form id="login-form">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+
+        <button type="submit">Login</button>
+    </form>
+    <p id="login-error" style="color: red; display: none;">Invalid username or password. Please try again.</p>
+
+    <button type="button" id="show-register-btn">Don't have an account? Register</button>
 </div>
 
-<!-- Portfolio Page -->
-<div class="portfolio-container" id="portfolioPage" style="display: none;">
+<!-- Registration Page (hidden initially) -->
+<div class="register-container hidden">
+    <h2>Register</h2>
+    <form id="register-form">
+        <label for="new-username">Username:</label>
+        <input type="text" id="new-username" required>
+
+        <label for="new-password">Password:</label>
+        <input type="password" id="new-password" required>
+
+        <button type="submit">Register</button>
+    </form>
+    <p id="register-error" style="color: red; display: none;">Registration failed. Please try again.</p>
+
+    <button type="button" id="show-login-btn">Already have an account? Login</button>
+</div>
+
+<!-- Portfolio Page (hidden initially) -->
+<div class="portfolio-container hidden">
     <div class="header">
         <h1>PORTFOLIO</h1>
         <h2>Nancy El Orm</h2>
@@ -15,7 +41,7 @@
         <div class="contact-info">
             <p><strong>Location:</strong> Beirut, Lebanon</p>
             <p><strong>Phone Number:</strong> 81/860206</p>
-            <p><strong>Email:</strong> <a href="mailto:nancyelorm11@gmail.com">nancyelorm11@gmail.com</a></p>
+            <p><strong>Email:</strong> <a href="mailto:nancyelorm11@gmail.com" style="color: #fff;">nancyelorm11@gmail.com</a></p>
         </div>
     </div>
     
@@ -34,7 +60,7 @@
         <!-- About Me -->
         <div class="section">
             <h4>About Me</h4>
-            <p>I am a hardworking and motivated Senior Computer Science student at Notre Dame University (NDU), currently in my final year. I have a passion for problem-solving and technology, with a focus on mobile and web development.</p>
+            <p>I am a hardworking and motivated Senior Computer Science student at Notre Dame University (NDU), currently in my final year. I have a passion for problem-solving and technology, with a focus on mobile and web development. I have hands-on experience with various programming languages and frameworks, including C#, Kotlin, JavaScript, and more. I am looking for opportunities to learn, grow, and apply my skills in real-world projects.</p>
         </div>
 
         <!-- Skills -->
@@ -66,6 +92,13 @@
             <ul>
                 <li>Worked on network configuration and database management.</li>
                 <li>Assisted in website development and maintaining internal tools.</li>
+                <li>Gained practical experience in IT systems and software development.</li>
+            </ul>
+
+            <h5>Previous Internship Experience</h5>
+            <ul>
+                <li>IT Coordinator at Mir Amin Palace Hotel.</li>
+                <li>Program Tasks role at Park Innovation.</li>
             </ul>
         </div>
 
@@ -83,8 +116,8 @@
             <p>If you wish to get in touch, you can reach me through the following channels:</p>
             <ul>
                 <li><strong>Phone:</strong> 81/860206</li>
-                <li><strong>Email:</strong> <a href="mailto:nancyelorm11@gmail.com">nancyelorm11@gmail.com</a></li>
-                <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/nancy-el-orm-528a20226">linkedin.com/in/nancy-el-orm-528a20226</a></li>
+                <li><strong>Email:</strong> <a href="mailto:nancyelorm11@gmail.com" style="color: #fff;">nancyelorm11@gmail.com</a></li>
+                <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/nancy-el-orm-528a20226" style="color: #fff;">linkedin.com/in/nancy-el-orm-528a20226</a></li>
             </ul>
         </div>
     </div>
@@ -97,51 +130,113 @@
         font-family: 'Poppins', sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #0d0d0d;
+        background-color: #111;
         color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        flex-direction: column;
     }
 
-    .login-container {
-        background: linear-gradient(135deg, #1e1e1e, #333);
-        padding: 40px;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        text-align: center;
-    }
-
-    .login-container input {
-        display: block;
+    .portfolio-container {
         width: 100%;
-        padding: 10px;
-        margin: 10px 0;
-        border: none;
-        border-radius: 5px;
+        max-width: 1200px;
+        margin: 50px auto;
+        padding: 30px;
+        background-color: #1a1a1a;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     }
 
-    .login-container button {
-        background: linear-gradient(45deg, #ff4b2b, #ff416c);
+    .header {
+        text-align: center;
+        border-bottom: 2px solid #333;
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+    }
+
+    .header h1 {
+        font-size: 60px;
+        font-weight: 600;
+    }
+
+    .header h2 {
+        font-size: 28px;
+        margin-top: 10px;
+    }
+
+    .description {
+        font-size: 16px;
+        color: #ccc;
+        margin: 15px 0;
+    }
+
+    .contact-info p {
+        font-size: 14px;
+        color: #ddd;
+    }
+
+    .content {
+        margin-top: 40px;
+    }
+
+    .table-of-contents h3 {
+        font-size: 24px;
+        color: #fff;
+        margin-bottom: 10px;
+    }
+
+    .table-of-contents ol {
+        list-style-type: decimal;
+        padding-left: 20px;
+    }
+
+    .section h4 {
+        font-size: 22px;
+        margin-bottom: 10px;
+        color: #fff;
+    }
+
+    .section ul {
+        list-style-type: none;
+        padding-left: 20px;
+    }
+
+    .section ul li {
+        font-size: 16px;
+        color: #ccc;
+    }
+
+    .logout-btn {
+        background-color: #f44336;
         color: white;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
+        padding: 14px;
+        width: 100%;
+        border-radius: 8px;
         cursor: pointer;
+        font-size: 16px;
+        transition: 0.3s ease;
+        border: none;
+    }
+
+    .logout-btn:hover {
+        background-color: #e53935;
+    }
+
+    .hidden {
+        display: none;
     }
 </style>
 
 <script>
-    function login() {
-        document.getElementById("loginPage").style.display = "none";
-        document.getElementById("portfolioPage").style.display = "block";
-    }
+    // Handle switching between login and registration forms
+    document.getElementById('show-register-btn').addEventListener('click', function() {
+        document.querySelector(".login-container").classList.add("hidden");
+        document.querySelector(".register-container").classList.remove("hidden");
+    });
 
-    function logout() {
-        document.getElementById("portfolioPage").style.display = "none";
-        document.getElementById("loginPage").style.display = "block";
-        alert("You have been logged out.");
-    }
-</script>
+    document.getElementById('show-login-btn').addEventListener('click', function() {
+        document.querySelector(".register-container").classList.add("hidden");
+        document.querySelector(".login-container").classList.remove("hidden");
+    });
+
+    // Registration logic
+    document.getElementById('register-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
