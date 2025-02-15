@@ -91,10 +91,4 @@ portfolio-login-system/
 - The portfolio page is a simple template that can be customized by editing the HTML, CSS, and JavaScript files.
 - This project is intended for educational purposes and demonstrates basic user authentication techniques in a client-side environment.
 
-## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-Feel free to modify the file paths, names, or any section of this README according to the structure of your repository.
