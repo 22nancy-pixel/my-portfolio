@@ -1,5 +1,13 @@
+<!-- Login Page -->
+<div class="login-container" id="loginPage">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+</div>
+
 <!-- Portfolio Page -->
-<div class="portfolio-container">
+<div class="portfolio-container" id="portfolioPage" style="display: none;">
     <div class="header">
         <h1>PORTFOLIO</h1>
         <h2>Nancy El Orm</h2>
@@ -98,62 +106,42 @@
         flex-direction: column;
     }
 
-    .portfolio-container {
-        width: 90%;
-        max-width: 1100px;
-        margin: 20px auto;
-        padding: 40px;
+    .login-container {
         background: linear-gradient(135deg, #1e1e1e, #333);
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         text-align: center;
     }
 
-    .header {
-        text-align: center;
-        border-bottom: 2px solid #444;
-        padding-bottom: 20px;
-        margin-bottom: 30px;
+    .login-container input {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 5px;
     }
 
-    .header h1 {
-        font-size: 50px;
-        font-weight: 700;
-    }
-
-    .header h2 {
-        font-size: 26px;
-        color: #ccc;
-    }
-
-    .description {
-        font-size: 18px;
-        color: #bbb;
-        margin-top: 10px;
-    }
-
-    .logout-btn {
+    .login-container button {
         background: linear-gradient(45deg, #ff4b2b, #ff416c);
         color: white;
-        padding: 15px;
-        width: 100%;
-        border-radius: 10px;
-        font-size: 18px;
-        font-weight: bold;
-        cursor: pointer;
+        padding: 10px;
         border: none;
-        transition: 0.3s;
-        margin-top: 20px;
-    }
-
-    .logout-btn:hover {
-        background: linear-gradient(45deg, #ff2e63, #ff5959);
+        border-radius: 5px;
+        cursor: pointer;
     }
 </style>
 
 <script>
+    function login() {
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("portfolioPage").style.display = "block";
+    }
+
     function logout() {
-        document.querySelector(".portfolio-container").style.display = "none";
+        document.getElementById("portfolioPage").style.display = "none";
+        document.getElementById("loginPage").style.display = "block";
         alert("You have been logged out.");
     }
 </script>
