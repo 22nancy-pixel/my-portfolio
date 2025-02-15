@@ -1,37 +1,3 @@
-<!-- Login Page -->
-<div class="login-container">
-    <h2>Login</h2>
-    <form id="login-form">
-        <label for="username">Username:</label>
-        <input type="text" id="username" required>
-
-        <label for="password">Password:</label>
-        <input type="password" id="password" required>
-
-        <button type="submit">Login</button>
-    </form>
-    <p id="login-error" style="color: red; display: none;">Invalid username or password. Please try again.</p>
-
-    <button type="button" id="show-register-btn">Don't have an account? Register</button>
-</div>
-
-<!-- Registration Page (hidden initially) -->
-<div class="register-container hidden">
-    <h2>Register</h2>
-    <form id="register-form">
-        <label for="new-username">Username:</label>
-        <input type="text" id="new-username" required>
-
-        <label for="new-password">Password:</label>
-        <input type="password" id="new-password" required>
-
-        <button type="submit">Register</button>
-    </form>
-    <p id="register-error" style="color: red; display: none;">Registration failed. Please try again.</p>
-
-    <button type="button" id="show-login-btn">Already have an account? Login</button>
-</div>
-
 <!-- Portfolio Page -->
 <div class="portfolio-container">
     <div class="header">
@@ -125,16 +91,22 @@
         padding: 0;
         background-color: #0d0d0d;
         color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        flex-direction: column;
     }
 
     .portfolio-container {
         width: 90%;
         max-width: 1100px;
-        margin: 50px auto;
+        margin: 20px auto;
         padding: 40px;
         background: linear-gradient(135deg, #1e1e1e, #333);
         border-radius: 15px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        text-align: center;
     }
 
     .header {
@@ -160,29 +132,6 @@
         margin-top: 10px;
     }
 
-    .table-of-contents {
-        margin-bottom: 30px;
-    }
-
-    .section h4 {
-        font-size: 24px;
-        color: #ddd;
-        border-bottom: 2px solid #555;
-        padding-bottom: 5px;
-        margin-bottom: 15px;
-    }
-
-    .section ul {
-        list-style: none;
-        padding-left: 20px;
-    }
-
-    .section ul li {
-        font-size: 18px;
-        color: #ccc;
-        margin-bottom: 5px;
-    }
-
     .logout-btn {
         background: linear-gradient(45deg, #ff4b2b, #ff416c);
         color: white;
@@ -194,6 +143,7 @@
         cursor: pointer;
         border: none;
         transition: 0.3s;
+        margin-top: 20px;
     }
 
     .logout-btn:hover {
@@ -205,128 +155,5 @@
     function logout() {
         document.querySelector(".portfolio-container").style.display = "none";
         alert("You have been logged out.");
-    }
-</script>
-
-
-    <button class="logout-btn" onclick="logout()">Logout</button>
-</div>
-
-<style>
-    body {
-        font-family: 'Poppins', sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #111;
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
-
-    .login-container, .register-container {
-        width: 400px;
-        background-color: #1a1a1a;
-        padding: 30px;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        text-align: center;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-
-    .login-container h2, .register-container h2 {
-        font-size: 24px;
-        margin-bottom: 20px;
-    }
-
-    .login-container input, .register-container input {
-        width: 100%;
-        padding: 10px;
-        margin: 10px 0;
-        border: none;
-        border-radius: 5px;
-    }
-
-    .login-container button, .register-container button {
-        width: 100%;
-        padding: 12px;
-        background-color: #f44336;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-        margin-top: 10px;
-    }
-
-    .login-container button:hover, .register-container button:hover {
-        background-color: #e53935;
-    }
-
-    .hidden {
-        display: none;
-    }
-</style>
-<script>
-    // Handle switching between login and registration forms
-    document.getElementById('show-register-btn').addEventListener('click', function() {
-        document.querySelector(".login-container").classList.add("hidden");
-        document.querySelector(".register-container").classList.remove("hidden");
-    });
-
-    document.getElementById('show-login-btn').addEventListener('click', function() {
-        document.querySelector(".register-container").classList.add("hidden");
-        document.querySelector(".login-container").classList.remove("hidden");
-    });
-
-    // Registration logic
-    document.getElementById('register-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const newUsername = document.getElementById('new-username').value;
-        const newPassword = document.getElementById('new-password').value;
-
-        if (newUsername && newPassword) {
-            // Save the username and password in localStorage
-            localStorage.setItem('username', newUsername);
-            localStorage.setItem('password', newPassword);
-
-            // Hide registration and show login form
-            document.querySelector(".register-container").classList.add("hidden");
-            document.querySelector(".login-container").classList.remove("hidden");
-        } else {
-            document.getElementById('register-error').style.display = 'block';
-        }
-    });
-
-    // Login logic
-    document.getElementById('login-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-
-        // Retrieve stored credentials from localStorage
-        const storedUsername = localStorage.getItem('username');
-        const storedPassword = localStorage.getItem('password');
-
-        if (username === storedUsername && password === storedPassword) {
-            // Successful login, show portfolio and hide login form
-            document.querySelector(".login-container").classList.add("hidden");
-            document.querySelector(".portfolio-container").classList.remove("hidden");
-        } else {
-            // Show error message if credentials are incorrect
-            document.getElementById('login-error').style.display = 'block';
-        }
-    });
-
-    // Logout function
-    function logout() {
-        document.querySelector(".portfolio-container").classList.add("hidden");
-        document.querySelector(".login-container").classList.remove("hidden");
     }
 </script>
