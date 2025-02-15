@@ -225,18 +225,33 @@
 </style>
 
 <script>
-    // Handle switching between login and registration forms
-    document.getElementById('show-register-btn').addEventListener('click', function() {
-        document.querySelector(".login-container").classList.add("hidden");
-        document.querySelector(".register-container").classList.remove("hidden");
-    });
+   // Handle switching between login and registration forms
+document.getElementById('show-register-btn').addEventListener('click', function() {
+    document.querySelector(".login-container").classList.add("hidden");
+    document.querySelector(".register-container").classList.remove("hidden");
+});
 
-    document.getElementById('show-login-btn').addEventListener('click', function() {
+document.getElementById('show-login-btn').addEventListener('click', function() {
+    document.querySelector(".register-container").classList.add("hidden");
+    document.querySelector(".login-container").classList.remove("hidden");
+});
+
+// Registration logic
+document.getElementById('register-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Get the input values
+    const username = document.getElementById('new-username').value;
+    const password = document.getElementById('new-password').value;
+
+    // Simulate a simple check (this should be replaced with actual backend validation)
+    if (username && password) {
+        alert('Registration successful!');
         document.querySelector(".register-container").classList.add("hidden");
         document.querySelector(".login-container").classList.remove("hidden");
-    });
+    } else {
+        document.getElementById('register-error').style.display = 'block';
+    }
+});
 
-    // Registration logic
-    document.getElementById('register-form').addEventListener('submit', function(event) {
-        event.preventDefault();
 
