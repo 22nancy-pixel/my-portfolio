@@ -10,7 +10,7 @@
 
         <button type="submit">Login</button>
     </form>
-    <p id="login-error" class="error-message">Invalid username or password. Please try again.</p>
+    <p id="login-error" style="color: red; display: none;">Invalid username or password. Please try again.</p>
 
     <button type="button" id="show-register-btn">Don't have an account? Register</button>
 </div>
@@ -27,7 +27,7 @@
 
         <button type="submit">Register</button>
     </form>
-    <p id="register-error" class="error-message">Registration failed. Please try again.</p>
+    <p id="register-error" style="color: red; display: none;">Registration failed. Please try again.</p>
 
     <button type="button" id="show-login-btn">Already have an account? Login</button>
 </div>
@@ -49,22 +49,22 @@
         <div class="table-of-contents">
             <h3>TABLE OF CONTENTS</h3>
             <ol>
-                <li>About Me</li>
-                <li>Skills</li>
-                <li>Experience</li>
-                <li>Education</li>
-                <li>Contact</li>
+                <li><a href="#about-me">About Me</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ol>
         </div>
 
-        <!-- About Me -->
-        <div class="section">
+        <!-- About Me Section -->
+        <div id="about-me" class="section">
             <h4>About Me</h4>
             <p>I am a hardworking and motivated Senior Computer Science student at Notre Dame University (NDU), currently in my final year. I have a passion for problem-solving and technology, with a focus on mobile and web development. I have hands-on experience with various programming languages and frameworks, including C#, Kotlin, JavaScript, and more. I am looking for opportunities to learn, grow, and apply my skills in real-world projects.</p>
         </div>
 
-        <!-- Skills -->
-        <div class="section">
+        <!-- Skills Section -->
+        <div id="skills" class="section">
             <h4>Skills</h4>
             <ul>
                 <li>Programming Languages: C#, Kotlin, JavaScript, Python, C++, HTML</li>
@@ -76,8 +76,8 @@
             </ul>
         </div>
 
-        <!-- Experience -->
-        <div class="section">
+        <!-- Experience Section -->
+        <div id="experience" class="section">
             <h4>Experience</h4>
             <h5>IT Coordinator at Mir Amin Palace Hotel</h5>
             <p><strong>October 2023 – October 2024</strong></p>
@@ -102,16 +102,16 @@
             </ul>
         </div>
 
-        <!-- Education -->
-        <div class="section">
+        <!-- Education Section -->
+        <div id="education" class="section">
             <h4>Education</h4>
             <p><strong>Bachelor’s Degree in Computer Science</strong></p>
             <p>Notre Dame University (NDU), Final Year</p>
             <p><strong>High School Diploma</strong> - Irfan Schools, Graduated in 2022</p>
         </div>
 
-        <!-- Contact -->
-        <div class="section">
+        <!-- Contact Section -->
+        <div id="contact" class="section">
             <h4>Contact</h4>
             <p>If you wish to get in touch, you can reach me through the following channels:</p>
             <ul>
@@ -127,138 +127,59 @@
 
 <style>
     body {
-        font-family: 'Arial', sans-serif;
+        font-family: 'Poppins', sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #f4f4f9;
-        color: #333;
-    }
-
-    /* Login/Registration Container */
-    .login-container, .register-container {
-        width: 100%;
-        max-width: 400px;
-        margin: 50px auto;
-        padding: 30px;
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    }
-
-    .login-container h2, .register-container h2 {
-        text-align: center;
-        font-size: 26px;
-        margin-bottom: 20px;
-        color: #444;
-    }
-
-    .login-container label, .register-container label {
-        font-size: 14px;
-        color: #666;
-    }
-
-    .login-container input, .register-container input {
-        width: 100%;
-        padding: 12px;
-        margin: 10px 0;
-        font-size: 16px;
-        border-radius: 5px;
-        border: 1px solid #ddd;
-    }
-
-    .login-container button, .register-container button {
-        width: 100%;
-        padding: 12px;
-        font-size: 16px;
+        background-color: #111;
         color: white;
-        background-color: #5cb85c;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
     }
 
-    .login-container button:hover, .register-container button:hover {
-        background-color: #4cae4c;
-    }
-
-    .error-message {
-        color: #d9534f;
-        font-size: 14px;
-        display: none;
-        text-align: center;
-    }
-
-    .hidden {
-        display: none;
-    }
-
-    /* Portfolio Container */
     .portfolio-container {
         width: 100%;
         max-width: 1200px;
         margin: 50px auto;
         padding: 30px;
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        background-color: #1a1a1a;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     }
 
     .header {
         text-align: center;
-        margin-bottom: 40px;
+        border-bottom: 2px solid #333;
+        margin-bottom: 30px;
         padding-bottom: 20px;
-        border-bottom: 2px solid #eee;
     }
 
     .header h1 {
-        font-size: 40px;
-        color: #333;
-        margin-bottom: 10px;
+        font-size: 60px;
+        font-weight: 600;
     }
 
     .header h2 {
         font-size: 28px;
-        color: #666;
-    }
-
-    .header .description {
-        font-size: 16px;
-        color: #888;
         margin-top: 10px;
     }
 
+    .description {
+        font-size: 16px;
+        color: #ccc;
+        margin: 15px 0;
+    }
+
     .contact-info p {
-        font-size: 16px;
-        color: #888;
-        margin: 5px 0;
+        font-size: 14px;
+        color: #ddd;
     }
 
-    .content .section {
-        margin-bottom: 30px;
-    }
-
-    .content h4 {
-        font-size: 24px;
-        color: #333;
-        margin-bottom: 10px;
-    }
-
-    .content ul {
-        list-style-type: none;
-        padding-left: 20px;
-    }
-
-    .content ul li {
-        font-size: 16px;
-        color: #666;
-        margin-bottom: 5px;
+    .content {
+        margin-top: 40px;
     }
 
     .table-of-contents h3 {
-        font-size: 20px;
-        color: #444;
-        margin-bottom: 15px;
+        font-size: 24px;
+        color: #fff;
+        margin-bottom: 10px;
     }
 
     .table-of-contents ol {
@@ -266,87 +187,53 @@
         padding-left: 20px;
     }
 
-    .link {
-        color: #007bff;
+    .table-of-contents a {
         text-decoration: none;
+        color: #007bff;
+        font-size: 18px;
+        display: block;
+        margin: 10px 0;
+        transition: color 0.3s ease;
     }
 
-    .link:hover {
-        text-decoration: underline;
+    .table-of-contents a:hover {
+        color: #0056b3;
+    }
+
+    .section h4 {
+        font-size: 22px;
+        margin-bottom: 10px;
+        color: #fff;
+    }
+
+    .section ul {
+        list-style-type: none;
+        padding-left: 20px;
+    }
+
+    .section ul li {
+        font-size: 16px;
+        color: #ccc;
     }
 
     .logout-btn {
-        background-color: #d9534f;
+        background-color: #f44336;
         color: white;
-        padding: 12px;
-        border: none;
-        border-radius: 5px;
+        padding: 14px;
+        width: 100%;
+        border-radius: 8px;
         cursor: pointer;
         font-size: 16px;
-        width: 100%;
-        margin-top: 20px;
+        transition: 0.3s ease;
+        border: none;
     }
 
     .logout-btn:hover {
-        background-color: #c9302c;
+        background-color: #e53935;
     }
-</style>
 
-<script>
-    // Handle switching between login and registration forms
-    document.getElementById('show-register-btn').addEventListener('click', function() {
-        document.querySelector(".login-container").classList.add("hidden");
-        document.querySelector(".register-container").classList.remove("hidden");
-    });
-
-    document.getElementById('show-login-btn').addEventListener('click', function() {
-        document.querySelector(".register-container").classList.add("hidden");
-        document.querySelector(".login-container").classList.remove("hidden");
-    });
-
-    // Login logic
-    document.getElementById('login-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        // Get the input values for login
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-
-        // Check if username and password match the stored data
-        const storedUsername = localStorage.getItem('username');
-        const storedPassword = localStorage.getItem('password');
-
-        if (username === storedUsername && password === storedPassword) {
-            alert('Login successful!');
-            document.querySelector(".login-container").classList.add("hidden");
-            document.querySelector(".portfolio-container").classList.remove("hidden");
-        } else {
-            document.getElementById('login-error').style.display = 'block';
-        }
-    });
-
-    // Registration logic
-    document.getElementById('register-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        // Get the input values for registration
-        const username = document.getElementById('new-username').value;
-        const password = document.getElementById('new-password').value;
-
-        // Store the username and password in localStorage
-        localStorage.setItem('username', username);
-        localStorage.setItem('password', password);
-
-        alert('Registration successful!');
-        document.querySelector(".register-container").classList.add("hidden");
-        document.querySelector(".login-container").classList.remove("hidden");
-    });
-
-    // Logout function
-    function logout() {
-        localStorage.removeItem('username');
-        localStorage.removeItem('password');
-        document.querySelector(".portfolio-container").classList.add("hidden");
-        document.querySelector(".login-container").classList.remove("hidden");
+    .hidden {
+        display: none;
     }
-</script>
+
+    html 
